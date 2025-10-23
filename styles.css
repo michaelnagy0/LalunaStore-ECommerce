@@ -1,0 +1,580 @@
+/* الألوان والثوابت */
+:root {
+    --color-light: #F9F9F9;    /* أبيض ناصع للخلفيات */
+    --color-dark: #1A1A1A;     /* أسود غامق للنصوص */
+    --color-gold: #D4AF37;     /* ذهبي ملكي */
+    --color-gold-light: #FFD700; /* ذهبي أفتح للتأثيرات */
+    --color-silver: #C0C0C0;
+    --font-primary: 'Playfair Display', serif; /* خط أنيق للعناوين */
+    --font-secondary: 'Cairo', sans-serif; /* خط ثانوي لنص الجسم */
+}
+
+/* إعادة تعيين التنسيقات الأساسية */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    /* إضافة حركة سلسة لجميع العناصر للتنقل الأنيق */
+    transition: all 0.3s ease-in-out;
+}
+
+body {
+    font-family: var(--font-secondary);
+    background-color: var(--color-light); 
+    color: var(--color-dark);
+    direction: ltr; 
+    text-align: left;
+    line-height: 1.6;
+    /* تأثير القماش الحريري/المخملي مع ضبابية */
+    background-image: radial-gradient(circle at center, rgba(255, 255, 255, 0.9), rgba(224, 224, 224, 0.9));
+    backdrop-filter: blur(1px); 
+    -webkit-backdrop-filter: blur(1px);
+}
+
+/* 1. رأس الصفحة (Header) والتنقل */
+header {
+    background-color: #000000;
+    color: var(--color-light);
+    padding: 20px 0;
+    text-align: center;
+    border-bottom: 3px solid var(--color-gold);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+.logo-container { /* جزء الشعار */
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+
+.logo {
+    width: 60px; /* حجم صغير وأنيق */
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--color-gold-light);
+}
+
+header h2 {
+    font-family: var(--font-primary);
+    font-size: 1.2em;
+    font-weight: 400;
+    color: var(--color-silver);
+    margin-bottom: 15px;
+}
+
+/* تنسيق الـ Nav لجعل الروابط أفقية (بالعرض) */
+nav ul {
+    list-style: none;
+    display: flex; /* يجعل العناصر في صف واحد */
+    justify-content: center;
+    align-items: center; /* توسيط عمودي للعناصر */
+    padding-top: 15px;
+    flex-wrap: wrap; /* للسماح للعناصر بالنزول لسطر جديد في شاشات الجوال */
+}
+
+nav ul li {
+    margin: 0 10px; /* تقليل التباعد قليلاً */
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: var(--color-light);
+    font-weight: 700;
+    letter-spacing: 1px;
+    padding: 5px 10px;
+}
+
+nav ul li a:hover {
+    color: var(--color-gold-light);
+    border-bottom: 2px solid var(--color-gold-light); /* خط ذهبي تحت الرابط */
+}
+
+/* تنسيق حقل البحث */
+.search-box-li {
+    display: flex;
+    align-items: center;
+    margin: 0 20px;
+    background-color: #FFFFFF;
+    border-radius: 5px;
+    padding: 2px 5px;
+}
+
+.search-input {
+    border: none;
+    padding: 8px;
+    width: 150px;
+    outline: none;
+    font-size: 0.9em;
+    color: var(--color-dark);
+}
+
+.search-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1em;
+    padding: 0 5px;
+}
+
+
+/* 2. المحتوى الرئيسي والتوسيط (Centering) */
+main {
+    padding: 20px 0; 
+    width: 100%;
+    min-height: 80vh; /* ضمان أن يكون المحتوى له ارتفاع كافٍ */
+}
+
+section {
+    padding: 40px 20px;
+    margin-bottom: 30px;
+    max-width: 1200px; 
+    width: 90%; 
+    margin-left: auto; /* التوسيط الأفقي */
+    margin-right: auto; /* التوسيط الأفقي */
+}
+
+/* تنسيق العناوين (H2) */
+h2 {
+    font-family: var(--font-primary);
+    text-align: center;
+    color: var(--color-gold); 
+    font-size: 2.5em;
+    padding-bottom: 15px;
+    margin-bottom: 30px;
+    border-bottom: 2px solid var(--color-gold);
+    letter-spacing: 1.5px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* 3. تنسيق قسم البطل (Hero Section) */
+.hero-section {
+    min-height: 600px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* يمكنك استبدال الرابط بخلفية مناسبة لك */
+    background: url('https://images.unsplash.com/photo-1579546929518-9e396f0ab877?q=80&w=2000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') center/cover no-repeat; 
+    color: #FFFFFF;
+    text-align: center;
+}
+
+.hero-content {
+    background-color: rgba(0, 0, 0, 0.6);
+    padding: 40px;
+    border-radius: 10px;
+    max-width: 800px;
+}
+
+/* 4. تنسيق أزرار الـ CTA (Shop Now) - فخم */
+.cta-button {
+    display: inline-block;
+    background-color: var(--color-gold);
+    color: var(--color-dark);
+    text-decoration: none;
+    padding: 15px 35px;
+    margin: 10px;
+    border: 2px solid var(--color-gold);
+    border-radius: 50px; /* شكل بيضاوي أنيق */
+    font-weight: 700;
+    letter-spacing: 1px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1); /* حركة أكثر سلاسة وفخامة */
+}
+
+.cta-button:hover {
+    background-color: var(--color-dark);
+    color: var(--color-gold-light);
+    transform: translateY(-5px) scale(1.02); /* رفع وتكبير بسيط */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+}
+
+/* 5. تنسيق فلاتر المنتجات (Sub-Categories / Filter Tabs) - أنيقة */
+.filter-tabs {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 30px;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.filter-tabs li button {
+    background-color: #FFFFFF;
+    color: var(--color-dark);
+    border: 2px solid var(--color-gold);
+    padding: 10px 25px;
+    border-radius: 20px;
+    font-weight: 600;
+    cursor: pointer;
+    text-transform: uppercase;
+}
+
+.filter-tabs li button:hover,
+.filter-tabs li button.active {
+    background-color: var(--color-gold);
+    color: var(--color-dark);
+    box-shadow: 0 5px 10px rgba(212, 175, 55, 0.4);
+    transform: translateY(-2px);
+}
+
+
+/* 6. عرض المنتجات (Products) */
+.products-section {
+    text-align: center;
+}
+
+/* تنسيق حاوية الشبكة للمنتجات (Grid) */
+.products-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* لتوسيط المنتجات داخل الحاوية */
+    gap: 30px;
+}
+
+/* تنسيق بطاقة المنتج الفردية */
+.product { 
+    width: 300px; 
+    padding: 15px;
+    background-color: #FFFFFF;
+    border: 1px solid var(--color-gold); 
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    text-align: left;
+    overflow: hidden;
+    display: block; 
+    /* تأكد من أن الرابط يغطي المنتج بالكامل عدا زر الإضافة */
+}
+
+.product:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.product-link {
+    text-decoration: none;
+    color: var(--color-dark);
+    display: block; 
+    padding-bottom: 10px;
+}
+
+/* تنسيق زر "Add to Cart" */
+.add-to-cart {
+    background-color: var(--color-dark);
+    color: var(--color-gold-light);
+    border: 2px solid var(--color-dark);
+    padding: 10px 20px;
+    margin-top: 10px;
+    font-weight: 700;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+}
+
+.add-to-cart:hover {
+    background-color: var(--color-gold);
+    color: var(--color-dark);
+}
+
+/* 7. تنسيق صفحة تفاصيل المنتج (product-details.html) */
+.product-details-section {
+    text-align: left;
+    max-width: 1000px;
+    padding-top: 20px;
+}
+
+.details-container {
+    display: flex;
+    gap: 40px;
+    margin-top: 30px;
+    flex-wrap: wrap; 
+}
+
+.product-images {
+    flex: 1;
+    min-width: 300px;
+    text-align: center;
+}
+
+.main-image {
+    width: 100%;
+    max-height: 400px;
+    object-fit: contain;
+    border: 1px solid var(--color-silver);
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+.thumbnail-images {
+    display: flex;
+    justify-content: center;
+}
+
+.thumbnail-images img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    margin: 5px;
+    cursor: pointer;
+    border: 1px solid transparent;
+    border-radius: 4px;
+}
+
+.thumbnail-images img:hover {
+    border-color: var(--color-gold);
+}
+
+.product-info-details {
+    flex: 2;
+    padding: 20px;
+}
+
+.product-price-details {
+    font-size: 2em;
+    color: var(--color-gold);
+    font-family: var(--font-primary);
+    margin: 10px 0 20px 0;
+}
+
+.product-options select, .product-options input {
+    padding: 8px;
+    border: 1px solid var(--color-silver);
+    border-radius: 4px;
+}
+
+.return-policy {
+    margin-top: 30px;
+    padding: 15px;
+    border: 1px solid var(--color-silver);
+    border-left: 5px solid var(--color-gold);
+    background-color: #FAFAFA;
+    border-radius: 4px;
+}
+
+/* 8. تنسيق عربة التسوق (Cart/Checkout) - بروفيشنال */
+.cart-section {
+    max-width: 900px; 
+    text-align: center; 
+}
+
+/* تصميم جدول العربة الفاخر */
+.cart-items-table {
+    width: 100%;
+    margin-bottom: 40px;
+    background-color: #FFFFFF;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    border: 1px solid var(--color-silver);
+    overflow-x: auto; /* للتجاوبية على الشاشات الصغيرة */
+}
+
+.cart-items-table table {
+    min-width: 600px; /* ضمان حد أدنى للعرض */
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.cart-items-table th, .cart-items-table td {
+    padding: 15px;
+    text-align: center;
+    border-bottom: 1px solid #EEEEEE;
+}
+
+.cart-items-table th {
+    background-color: var(--color-gold); 
+    color: var(--color-dark);
+    font-family: var(--font-primary);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.product-info {
+    display: flex;
+    align-items: center;
+    text-align: left;
+}
+
+.product-info img {
+    width: 70px;
+    height: 70px;
+    object-fit: cover;
+    margin-right: 15px;
+    border-radius: 5px;
+    border: 1px solid var(--color-gold-light);
+}
+
+.quantity-controls input {
+    width: 50px;
+    text-align: center;
+    border: 1px solid var(--color-silver);
+    border-radius: 3px;
+    padding: 5px;
+    margin: 0 5px;
+}
+
+.remove-btn {
+    background: none;
+    border: none;
+    font-size: 1.2em;
+    cursor: pointer;
+}
+
+/* تنسيق إجمالي الطلب */
+.cart-totals {
+    margin-top: 30px;
+    padding: 20px;
+    border-top: 2px solid var(--color-gold);
+    text-align: right;
+    width: 100%;
+    background-color: #FFFFFF;
+    border-radius: 10px;
+}
+
+.total-price-final {
+    font-size: 1.8em;
+    color: var(--color-gold);
+    font-family: var(--font-primary);
+    font-weight: 700;
+}
+
+/* 9. تنسيق نموذج الدفع (Checkout Form) و صفحة التواصل (Contact) */
+.checkout-form fieldset {
+    margin-top: 20px;
+    padding: 20px;
+    border: 1px solid var(--color-gold);
+    border-radius: 8px;
+    background-color: #FFFFFF;
+}
+
+.checkout-form legend {
+    font-family: var(--font-primary);
+    color: var(--color-gold);
+    font-size: 1.3em;
+    padding: 0 10px;
+}
+
+.checkout-form input[type="text"], 
+.checkout-form input[type="email"], 
+.checkout-form input[type="tel"],
+.contact-form input[type="text"], 
+.contact-form input[type="email"], 
+.contact-form textarea {
+    width: 100%;
+    padding: 12px;
+    margin: 8px 0 20px 0;
+    border: 1px solid var(--color-silver);
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 1em;
+    text-align: left;
+}
+
+.contact-form {
+    max-width: 600px;
+    margin: 30px auto;
+    padding: 30px;
+    background-color: #FFFFFF;
+    border: 2px solid var(--color-gold);
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    text-align: left;
+}
+
+.direct-contact-info {
+    margin-top: 40px;
+    padding: 20px;
+    background-color: #F0F0F0;
+    border-radius: 8px;
+    text-align: center;
+}
+
+/* 10. تذييل الصفحة (Footer) */
+footer {
+    background-color: var(--color-dark);
+    color: var(--color-silver);
+    padding: 30px 0;
+    border-top: 3px solid var(--color-gold);
+    text-align: center;
+}
+
+footer a {
+    color: var(--color-gold);
+    text-decoration: none;
+}
+
+footer a:hover {
+    color: var(--color-gold-light);
+}
+
+/* 11. التجاوبية (Media Queries) - لضبط الشكل على الموبايل */
+@media (max-width: 768px) {
+    
+    header {
+        padding: 15px 0;
+    }
+    
+    /* شريط التنقل يصبح عموديًا على الأجهزة الصغيرة */
+    nav ul {
+        flex-direction: column;
+        gap: 10px;
+        padding: 10px 0;
+    }
+    
+    nav ul li {
+        margin: 5px 0;
+    }
+    
+    .search-box-li {
+        width: 90%; 
+        margin: 5px auto;
+        justify-content: space-between;
+    }
+    
+    .search-input {
+        width: 85%;
+    }
+
+    /* المنتجات */
+    .products-grid {
+        gap: 20px;
+    }
+    
+    .product {
+        width: 100%; /* المنتجات تأخذ كامل العرض */
+        max-width: 350px;
+    }
+
+    /* تفاصيل المنتج */
+    .details-container {
+        flex-direction: column; /* تحويل عرض تفاصيل المنتج إلى عمودي */
+        align-items: center;
+    }
+
+    .product-images, .product-info-details {
+        min-width: 100%;
+        max-width: 100%;
+        padding: 0;
+    }
+
+    .product-details-section {
+        padding: 10px;
+    }
+    
+    /* العربة */
+    .cart-items-table th, .cart-items-table td {
+        padding: 10px 5px;
+        font-size: 0.9em;
+    }
+    
+    .product-info img {
+        width: 50px;
+        height: 50px;
+    }
+    
+    .cart-items-table table {
+        min-width: 100%; /* إلغاء الحد الأدنى لكي يضيق مع الشاشة */
+    }
+}
