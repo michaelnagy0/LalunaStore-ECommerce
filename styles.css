@@ -1,10 +1,7 @@
 /*
 ==================================================
 * ملف styles.css - لمتجر La Luna للمجوهرات
-* يحتوي على:
-* 1. تنسيقات أساسية ومحسنة
-* 2. تصميم متجاوب (Responsive Design)
-* 3. قواعد عرض الصور المحسنة (لحل مشكلة الصور الطولية)
+* هذا هو الكود النهائي والكامل
 ==================================================
 */
 
@@ -12,12 +9,12 @@
 /* الألوان والمتغيرات الأساسية (Root Variables) */
 /* ----------------------------------------------- */
 :root {
-    --color-primary: #1c1c1c; /* أسود عميق للخلفية والنصوص */
-    --color-secondary: #ffffff; /* أبيض للنصوص والخلفيات */
-    --color-gold: #b8860b; /* لون ذهبي فاخر (DarkGoldenrod) */
-    --color-accent: #e5c100; /* لون ذهبي فاتح للإبراز */
-    --color-light-gray: #f4f4f4; /* خلفية خفيفة */
-    --color-dark-gray: #333333; /* للحدود والفواصل */
+    --color-primary: #1c1c1c; 
+    --color-secondary: #ffffff; 
+    --color-gold: #b8860b; 
+    --color-accent: #e5c100; 
+    --color-light-gray: #f4f4f4; 
+    --color-dark-gray: #333333; 
     --transition-speed: 0.3s;
 }
 
@@ -29,13 +26,13 @@
     margin: 0;
     padding: 0;
     font-family: 'Arial', sans-serif;
-    color: var(--color-primary); /* اللون الأساسي للنصوص */
+    color: var(--color-primary); 
 }
 
 body {
     background-color: var(--color-light-gray);
     line-height: 1.6;
-    direction: rtl; /* دعم اللغة العربية */
+    direction: rtl; 
 }
 
 a {
@@ -86,7 +83,7 @@ nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    flex-wrap: wrap; /* للسماح بالعناصر بالنزول لسطر جديد */
+    flex-wrap: wrap; 
 }
 
 .logo {
@@ -116,7 +113,6 @@ nav ul li a.active {
     border-bottom: 2px solid var(--color-gold);
 }
 
-/* شريط البحث والعربة */
 .search-cart {
     display: flex;
     align-items: center;
@@ -164,7 +160,6 @@ section {
     text-align: center;
 }
 
-/* قسم البانر/البطل (Hero Section) - للصفحة الرئيسية */
 .hero {
     background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('images/hero-bg.jpg') center/cover no-repeat;
     color: var(--color-secondary);
@@ -229,7 +224,10 @@ section {
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     padding-bottom: 15px;
-    overflow: hidden;
+    
+    /* 💥 مهم لحل مشكلة الصور الطويلة: هذا يضمن قص أي جزء يخرج عن حدود البطاقة */
+    overflow: hidden; 
+    
     text-align: right;
     transition: transform 0.2s;
 }
@@ -240,11 +238,11 @@ section {
 }
 
 /* ================================================= */
-/* 💥 الأهم: تعديل عرض الصور داخل شبكة المنتجات (لحل مشكلة الصور الطولية) */
+/* 💥 الكود الخاص بحل مشكلة الصور الطويلة في بطاقات المنتجات */
 /* ================================================= */
 .products-grid .product img {
     width: 100%;                  
-    height: 300px;                /* تثبيت الارتفاع للسماح بعرض أكثر وضوحاً */
+    height: 300px;                /* تثبيت الارتفاع لتوحيد شكل البطاقات */
     object-fit: cover;            /* يجعل الصورة تغطي المساحة المحددة (300px) دون تشويه ويقص الزيادات */
     object-position: center;      /* توسيط الصورة داخل الإطار */
     max-width: 100%;
@@ -266,7 +264,7 @@ section {
     font-size: 0.9em;
     color: var(--color-dark-gray);
     margin-bottom: 10px;
-    min-height: 40px; /* ضمان مساحة كافية للوصف */
+    min-height: 40px; 
 }
 
 .product .price {
@@ -278,7 +276,7 @@ section {
 }
 
 .product .cta-button {
-    width: calc(100% - 30px); /* يملأ العرض مع هامش داخلي 15px من الجهتين */
+    width: calc(100% - 30px); 
     margin: 0 15px;
     font-weight: 600;
 }
@@ -357,7 +355,7 @@ section {
 /* ----------------------------------------------- */
 
 .cart-table-container {
-    overflow-x: auto; /* يجعل الجدول قابلاً للتمرير أفقياً على الشاشات الصغيرة */
+    overflow-x: auto; 
     margin-bottom: 30px;
 }
 
@@ -365,7 +363,7 @@ section {
     width: 100%;
     border-collapse: collapse;
     text-align: right;
-    min-width: 600px; /* يضمن أن الجدول لن يتقلص بشكل مفرط */
+    min-width: 600px; 
 }
 
 .cart-table th, .cart-table td {
@@ -404,7 +402,7 @@ section {
     border: none;
     cursor: pointer;
     font-size: 1.2em;
-    color: #e74c3c; /* لون الحذف */
+    color: #e74c3c; 
     transition: color var(--transition-speed);
 }
 
@@ -415,7 +413,7 @@ section {
 /* ملخص الطلب */
 .cart-summary {
     max-width: 400px;
-    margin-left: auto; /* محاذاة لليمين */
+    margin-left: auto; 
     background-color: var(--color-secondary);
     padding: 25px;
     border-radius: 10px;
@@ -459,7 +457,7 @@ section {
 
 /* زر الواتساب */
 #whatsapp-order-btn {
-    background-color: #25D366; /* لون واتساب */
+    background-color: #25D366; 
     color: white;
 }
 
@@ -564,7 +562,7 @@ footer a {
     }
 
     .search-bar {
-        flex-grow: 1; /* لتمدد شريط البحث */
+        flex-grow: 1; 
     }
 
     /* صفحة تفاصيل المنتج */
@@ -592,7 +590,6 @@ footer a {
     }
     
     .products-grid {
-        /* يعرض منتج واحد في كل سطر */
         grid-template-columns: 1fr; 
     }
     
@@ -602,12 +599,7 @@ footer a {
         margin-left: 0;
     }
 
-    .cart-table-container {
-        /* لا يتم التعديل على الجدول، فقط يتم السماح بالتمرير */
-        min-width: unset; 
-    }
-
     .cart-table {
-        min-width: 500px; /* لضمان أن الجدول لا يتكسر */
+        min-width: 500px; 
     }
 }
