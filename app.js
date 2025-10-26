@@ -1,30 +1,40 @@
 /**
  * * ملف JavaScript: app.js
- * * هذا الملف يقوم بتشغيل الوظائف التفاعلية للموقع:
+ * * هذا هو الكود النهائي والكامل لوظائف الموقع التفاعلية:
  * 1. إدارة سلة التسوق (Add/Remove/Update Quantity) وحفظها في ذاكرة المتصفح (Local Storage).
  * 2. عرض محتوى سلة التسوق في صفحة cart.html وحساب الإجماليات.
  * 3. تفعيل فلاتر المنتجات في صفحات men.html و women.html.
  * 4. تفعيل وظيفة البحث والتصفية.
+ * 5. إضافة وظيفة الطلب عبر WhatsApp مع تفاصيل الدفع.
+ * 6. ربط سلس لأزرار "Add to Cart" في كل الصفحات.
  * */
+
+// --------------------------------------------------------
+// المتغيرات الثابتة - يرجى مراجعتها وتغييرها
+// --------------------------------------------------------
+
+const SHIPPING_FEE = 50.00; // قيمة الشحن الثابتة
+// !!! يرجى تغيير هذا الرقم إلى رقمك الخاص لـ WhatsApp !!!
+const PHONE_NUMBER = "+201012345678"; 
+
+// 💥 أرقام خدمات الدفع - يرجى تغييرها إلى أرقامك الحقيقية
+const INSTAPAY_NUMBER = "01123456789"; 
+const ORANGE_CASH_NUMBER = "01234567890";
 
 // --------------------------------------------------------
 // 1. وظائف سلة التسوق (Cart Functionality)
 // --------------------------------------------------------
 
-const SHIPPING_FEE = 50.00; // قيمة الشحن الثابتة
-
-// دالة لجلب العربة من Local Storage
 function getCart() {
     return JSON.parse(localStorage.getItem('lalunaCart')) || [];
 }
 
-// دالة لحفظ العربة في Local Storage
 function saveCart(cart) {
     localStorage.setItem('lalunaCart', JSON.stringify(cart));
 }
 
 /**
- * دالة إضافة المنتج للعربة (تُستدعى من زر "Add to Cart" في صفحات المنتجات)
+ * دالة إضافة المنتج للعربة
  * @param {HTMLElement} button - زر الإضافة
  */
 function addToCart(button) {
@@ -32,7 +42,8 @@ function addToCart(button) {
     const name = productElement.getAttribute('data-name');
     const price = parseFloat(productElement.getAttribute('data-price'));
     
-    const imgElement = productElement.querySelector('.product-img');
+    // محاولة جلب صورة المنتج من عنصر img داخل البطاقة
+    const imgElement = productElement.querySelector('img');
     const img = imgElement ? imgElement.src : 'placeholder.jpg'; 
 
     let cart = getCart();
@@ -54,19 +65,19 @@ function addToCart(button) {
 }
 
 /**
- * دالة لحذف منتج بالكامل من العربة (تُستدعى عند الضغط على زر الحذف ❌)
+ * دالة لحذف منتج بالكامل من العربة
  * @param {string} name - اسم المنتج المراد حذفه
  */
 function removeItemFromCart(name) {
     let cart = getCart();
     cart = cart.filter(item => item.name !== name);
     saveCart(cart);
-    displayCart(); // إعادة عرض العربة لتحديث الجدول
+    displayCart(); 
 }
 
 
 /**
- * دالة لتحديث كمية المنتج (تُستدعى عند تغيير قيمة حقل الكمية)
+ * دالة لتحديث كمية المنتج (في cart.html)
  * @param {string} name - اسم المنتج
  * @param {number} newQty - الكمية الجديدة
  */
@@ -80,13 +91,12 @@ function updateCartQuantity(name, newQty) {
         if (newQty > 0) {
             item.qty = newQty;
         } else {
-            // إذا كانت الكمية صفر أو أقل، نحذفه
             removeItemFromCart(name);
             return; 
         }
     }
     saveCart(cart);
-    displayCart(); // إعادة عرض العربة لتحديث الأسعار والإجمالي
+    displayCart(); 
 }
 
 
@@ -107,7 +117,7 @@ function displayCart() {
 
     if (cart.length === 0) {
         const row = document.createElement('tr');
-        row.innerHTML = `<td colspan="5" style="padding: 20px; text-align: center; color: var(--color-gold); font-weight: 700;">Your cart is empty. Add some luxury items!</td>`;
+        row.innerHTML = `<td colspan="5" style="padding: 20px; text-align: center; color: var(--color-gold); font-weight: 700;">سلة التسوق فارغة. يرجى إضافة منتجات!</td>`;
         tableBody.appendChild(row);
         
         subtotalElement.textContent = `0.00 EGP`;
@@ -163,7 +173,6 @@ function displayCart() {
     if(whatsappBtn) whatsappBtn.style.display = 'inline-block';
     if(checkoutBtn) checkoutBtn.style.display = 'inline-block';
     
-    // ربط الأحداث بعد إنشاء العناصر
     setupCartEventListeners(); 
 }
 
@@ -173,6 +182,7 @@ function displayCart() {
 function setupCartEventListeners() {
     // 1. ربط حدث تغيير الكمية
     document.querySelectorAll('.cart-qty-input').forEach(input => {
+        // نستخدم removeEventListener لتجنب تكرار ربط الأحداث
         input.removeEventListener('change', handleQuantityChange); 
         input.addEventListener('change', handleQuantityChange);
     });
@@ -196,7 +206,7 @@ function handleQuantityChange(event) {
 function handleRemoveClick(event) {
     const button = event.target;
     const name = button.getAttribute('data-product-name');
-    if (confirm(`Are you sure you want to remove ${name} from your cart?`)) {
+    if (confirm(`هل أنت متأكد من حذف ${name} من سلة التسوق؟`)) {
         removeItemFromCart(name);
     }
 }
@@ -245,13 +255,12 @@ function handleSearch() {
     const query = searchInput.value.trim().toLowerCase();
     
     if (query.length < 2) {
-        alert("Please enter at least two letters to search.");
+        alert("يرجى إدخال حرفين على الأقل للبحث.");
         return;
     }
     
     const currentPage = window.location.pathname.split('/').pop();
     
-    // محاولات استنتاج نية المستخدم (للتوجيه الأولي)
     const isMenQuery = query.includes('رجالي') || query.includes('men') || query.includes('رجل') || query.includes('سلسلة') || query.includes('محفظة');
     const isWomenQuery = query.includes('نسائي') || query.includes('women') || query.includes('سوار') || query.includes('قلادة') || query.includes('حلق');
     
@@ -301,10 +310,9 @@ function applySearchFilter(query) {
     // إزالة تحديد الفلتر النشط
     document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
     
-    // إظهار رسالة إذا لم يتم العثور على نتائج (تتطلب عنصر HTML يحمل id="search-results-message")
     const resultsMessage = document.getElementById('search-results-message');
     if (resultsMessage) {
-        resultsMessage.textContent = resultsFound === 0 ? `No results found for "${query}"` : `Showing ${resultsFound} results for "${query}"`;
+        resultsMessage.textContent = resultsFound === 0 ? `لم يتم العثور على نتائج لـ "${query}"` : `عرض ${resultsFound} نتائج لـ "${query}"`;
     }
 
     // تنظيف حقل البحث بعد التصفية
@@ -314,7 +322,57 @@ function applySearchFilter(query) {
 
 
 // --------------------------------------------------------
-// 4. ربط الأحداث الرئيسية (Initialization)
+// 4. وظيفة الطلب عبر WhatsApp (المعدلة)
+// --------------------------------------------------------
+
+function generateWhatsAppOrderLink() {
+    const cart = getCart();
+    if (cart.length === 0) {
+        alert("سلة التسوق فارغة. يرجى إضافة منتجات قبل إرسال الطلب.");
+        return;
+    }
+
+    let subtotal = 0;
+    let message = "مرحباً متجر La Luna! أرغب بتقديم الطلب التالي:\n\n";
+
+    cart.forEach((item, index) => {
+        const itemTotal = item.price * item.qty;
+        subtotal += itemTotal;
+        
+        message += `${index + 1}. ${item.name} (السعر: ${item.price.toFixed(2)} جنيه) × ${item.qty} = ${itemTotal.toFixed(2)} جنيه\n`;
+    });
+
+    const finalTotal = subtotal + SHIPPING_FEE;
+    
+    message += "\n-------------------------------------\n";
+    message += `الإجمالي الفرعي: ${subtotal.toFixed(2)} جنيه\n`;
+    message += `رسوم الشحن: ${SHIPPING_FEE.toFixed(2)} جنيه\n`;
+    message += `الإجمالي الكلي: *${finalTotal.toFixed(2)} جنيه*\n`; // تم إبراز الإجمالي
+    
+    // 💥 الجزء المضاف: تعليمات الدفع وإرسال الإيصال
+    message += "\n=====================================\n";
+    message += "✅ طريقة الدفع: تحويل المبلغ المطلوب:\n";
+    
+    message += "اختر إحدى طرق التحويل التالية:\n";
+    message += `⬅️ *إنستا باي (InstaPay):* ${INSTAPAY_NUMBER}\n`;
+    message += `⬅️ *أورانج كاش (Orange Cash):* ${ORANGE_CASH_NUMBER}\n\n`;
+
+    message += "🚨 *الخطوة الأخيرة لتأكيد الطلب:*\n";
+    message += "بعد التحويل، *يرجى إرسال صورة إيصال التحويل في هذه المحادثة مباشرةً* لتأكيد الطلب والشحن. شكراً جزيلاً!";
+    message += "\n=====================================\n";
+
+
+    // تشفير الرسالة لعنوان URL
+    const encodedMessage = encodeURIComponent(message);
+    
+    // إنشاء وفتح الرابط
+    const whatsappLink = `https://wa.me/${PHONE_NUMBER.replace('+', '')}?text=${encodedMessage}`;
+    window.open(whatsappLink, '_blank');
+}
+
+
+// --------------------------------------------------------
+// 5. ربط الأحداث الرئيسية (Initialization)
 // --------------------------------------------------------
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -322,7 +380,23 @@ document.addEventListener('DOMContentLoaded', () => {
     // 1. تشغيل عرض العربة إذا كنا في صفحة cart.html
     if (document.getElementById('cart-table-body')) {
         displayCart();
+        
+        // ربط زر الطلب عبر الواتساب 
+        const whatsappBtn = document.getElementById('whatsapp-order-btn');
+        if (whatsappBtn) {
+            whatsappBtn.addEventListener('click', generateWhatsAppOrderLink);
+        }
     }
+
+    // 💥 ربط سلس لجميع أزرار "Add to Cart" في كل صفحات المنتجات
+    document.querySelectorAll('.product .cta-button').forEach(button => {
+        // نستخدم removeEventListener و addEventListener لمنع تكرار الربط
+        button.removeEventListener('click', (e) => addToCart(e.currentTarget));
+        button.addEventListener('click', (e) => {
+            e.preventDefault(); 
+            addToCart(e.currentTarget);
+        });
+    });
 
     // 2. تشغيل فلاتر المنتجات إذا كنا في صفحات المنتجات
     setupFilterTabs();
@@ -338,7 +412,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (searchInput) {
         searchInput.addEventListener('keydown', (event) => {
             if (event.key === 'Enter') {
-                event.preventDefault(); // منع الإرسال الافتراضي للنموذج
+                event.preventDefault(); 
                 handleSearch();
             }
         });
