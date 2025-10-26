@@ -1,13 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<meta name="description" content="La Luna - متجر المجوهرات الفاخرة للرجال والنساء. اكتشف تشكيلتنا من الخواتم، القلائد، والأساور المصنوعة يدوياً.">
-<meta name="keywords" content="مجوهرات فاخرة, خواتم رجالي, هدايا نسائية, ذهب, فضة, La Luna, متجر مجوهرات">
-<meta name="author" content="La Luna Team">
-
-<title>La Luna Store | مجوهرات فاخرة للرجال والنساء</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Product Details | Laluna Store</title>
@@ -38,54 +31,67 @@
     </header>
 
     <main class="centered-content">
-        <section id="product-details-page" class="product-details-section">
-            <h2 class="product-name">Royal Men's Ring - The Crown Jewel</h2>
+        
+        <section class="product-details-section product-detail-card" 
+                 data-name="Classic King Ring" 
+                 data-price="450.00">
+
+            <h2>Product Details</h2>
             
             <div class="details-container">
+                
                 <div class="product-images">
-                    <img src="placeholder_men_ring.jpg" alt="Main Product Image" class="main-image">
+                    <img src="placeholder_men_ring.jpg" alt="Classic King Ring" class="main-image">
                     <div class="thumbnail-images">
-                        <img src="placeholder_men_ring.jpg" alt="Product Thumbnail 1">
-                        <img src="placeholder_men_ring.jpg" alt="Product Thumbnail 2">
-                        </div>
+                        <img src="placeholder_men_ring.jpg" alt="Thumb 1" onclick="document.querySelector('.main-image').src='placeholder_men_ring.jpg'">
+                        <img src="placeholder_men_ring_side.jpg" alt="Thumb 2" onclick="document.querySelector('.main-image').src='placeholder_men_ring_side.jpg'">
+                    </div>
                 </div>
-
+                
                 <div class="product-info-details">
-                    <p class="product-price-details"><strong>Price: 450 EGP</strong></p>
-                    <p class="stock-status">In Stock</p>
+                    <h1>Classic King Ring</h1>
+                    <p class="product-price-details">450.00 EGP</p>
                     
-                    <p class="product-description-full">
-                        This is the full, detailed description of the product. It should include all specifications like:
-                        <br>
-                        - **Material:** 925 Sterling Silver, 18K Gold Plated.
-                        <br>
-                        - **Stone:** Natural Black Agate.
-                        <br>
-                        - **Weight:** 15 grams.
-                        <br>
-                        - **Available Sizes:** 7, 8, 9, 10.
-                    </p>
-
+                    <p>This ring is crafted with high-grade stainless steel and is available in multiple royal colors. Perfect for a classic, powerful look.</p>
+                    
                     <div class="product-options">
-                        <label for="size-select">Select Size:</label>
-                        <select id="size-select">
-                            <option value="7">Size 7</option>
-                            <option value="8">Size 8</option>
-                            <option value="9">Size 9</option>
-                        </select>
-                        <label for="qty-input" style="margin-left: 20px;">Quantity:</label>
-                        <input type="number" id="qty-input" value="1" min="1" style="width: 60px; text-align: center;">
+                        
+                        <div style="margin-bottom: 15px;">
+                            <label for="size-select">Choose Size:</label>
+                            <select id="size-select">
+                                <option value="8">Size 8</option>
+                                <option value="9">Size 9</option>
+                                <option value="10">Size 10</option>
+                                <option value="11">Size 11</option>
+                            </select>
+                        </div>
+                        
+                        <div style="margin-bottom: 20px;">
+                            <label for="color-select">Choose Color:</label>
+                            <select id="color-select">
+                                <option value="Silver">Silver</option>
+                                <option value="Gold">Gold</option>
+                                <option value="Black">Black</option>
+                            </select>
+                        </div>
+                        
+                        <div style="margin-bottom: 20px;">
+                            <label for="qty-input">Quantity:</label>
+                            <input type="number" id="qty-input" value="1" min="1" max="10" style="width: 70px;">
+                        </div>
                     </div>
                     
-                    <button class="add-to-cart cta-button" style="width: 100%; margin-top: 20px;" onclick="alert('Product added to cart from details page!')">Add to Cart</button>
-                    
+                    <button class="cta-button add-to-cart-detail-btn">
+                        ADD TO CART
+                    </button>
+
                     <div class="return-policy">
-                        <h4>🔒 Worry-Free Shopping</h4>
-                        <p>We offer a 14-day return and exchange policy. Your satisfaction is guaranteed.</p>
+                        <p><strong>30 Days Return Policy:</strong> Return your item within 30 days for a full refund, no questions asked. Quality guaranteed.</p>
                     </div>
                 </div>
             </div>
         </section>
+
     </main>
 
     <footer id="footer-contact">
