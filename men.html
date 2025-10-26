@@ -1,40 +1,99 @@
 <!DOCTYPE html>
-<html lang="en" dir="rtl">
+<html lang="en" dir="ltr">
 <head>
-    <title>Men's Jewelry | Rings and Necklaces | La Luna Store</title> 
-    <link rel="stylesheet" href="styles.css"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="description" content="La Luna - متجر المجوهرات الفاخرة للرجال والنساء. اكتشف تشكيلتنا من الخواتم، القلائد، والأساور المصنوعة يدوياً.">
+<meta name="keywords" content="مجوهرات فاخرة, خواتم رجالي, هدايا نسائية, ذهب, فضة, La Luna, متجر مجوهرات">
+<meta name="author" content="La Luna Team">
+
+<title>La Luna Store | مجوهرات فاخرة للرجال والنساء</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Men's Accessories | Laluna Store</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <section class="products-list">
-        <div class="container">
-            <h1>Men's Jewelry Collection</h1>
+
+    <header>
+        <div class="logo-container">
+            <img src="WhatsApp Image 2025-10-22 at 3.08.32 PM.jpeg" alt="Laluna Store Logo" class="logo">
+        </div>
+        <h2>"Discover What's Missing"</h2>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="men.html">Men</a></li>
+                <li><a href="women.html">Women</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li class="search-box-li">
+                    <input type="text" id="search-input" placeholder="Search products..." class="search-input">
+                    <button class="search-btn">🔍</button>
+                </li>
+                <li><a href="cart.html">🛒 Cart</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="centered-content">
+        
+        <section id="men" class="products-section">
+            <h2>👔 Men's Accessories 🕶️</h2>
             
-            <div class="products-grid">
+            <ul class="filter-tabs">
+                <li><button class="filter-btn active" data-filter="all">All Items</button></li>
+                <li><button class="filter-btn" data-filter="rings">Rings</button></li>
+                <li><button class="filter-btn" data-filter="bracelets">Bracelets</button></li>
+                <li><button class="filter-btn" data-filter="chains">Chains</button></li>
+            </ul>
+            
+            <div class="products-grid" id="men-products-grid">
+                <div class="product" data-category="rings" data-name="Royal Men's Ring" data-price="450">
+                    <a href="product-details.html?id=M1" class="product-link">
+                        <img src="6039466489632459993.jpg" alt="Men's Royal Ring" class="product-img">
+                        <h3>Royal Men's Ring</h3>
+                        <p class="description">**Material:** 925 Silver with natural gemstone.</p>
+                        <p class="price"><strong>Price: 450 EGP</strong></p>
+                    </a>
+                    <button class="add-to-cart" onclick="addToCart(this)">Add to Cart</button>
+                </div>
                 
-                <div class="product" data-name="Silver Agate Ring" data-price="750.00" data-category="rings">
-                    <img src="images/men-1.jpg" alt="Silver Ring" class="product-img">
-                    <div class="product-info">
-                        <h3>Silver Agate Ring</h3>
-                        <span class="description">Men's 925 sterling silver ring with an Agate stone.</span>
-                        <span class="price">750.00 EGP</span>
-                        <a href="product-details.html" class="cta-button" style="margin-bottom: 5px; display: block;">View Details</a>
-                        <button class="cta-button">Add to Cart</button>
-                    </div>
+                <div class="product" data-category="chains" data-name="Luxury Men's Chain" data-price="600">
+                    <a href="product-details.html?id=M2" class="product-link">
+                        <img src="6039466489632459936.jpg" alt="Men's Chain" class="product-img">
+                        <h3>Luxury Men's Chain</h3>
+                        <p class="description">**Material:** Stainless Steel, 18K Gold Plated.</p>
+                        <p class="price"><strong>Price: 600 EGP</strong></p>
+                    </a>
+                    <button class="add-to-cart" onclick="addToCart(this)">Add to Cart</button>
+                </div>
+                
+                <div class="product" data-category="bracelets" data-name="Leather Men's Bracelet" data-price="250">
+                    <a href="product-details.html?id=M3" class="product-link">
+                        <img src="6039466489632459906.jpg" alt="Leather Men's Bracelet" class="product-img">
+                        <h3>Leather Men's Bracelet</h3>
+                        <p class="description">**Material:** Genuine Leather and Stainless Steel clasp.</p>
+                        <p class="price"><strong>Price: 250 EGP</strong></p>
+                    </a>
+                    <button class="add-to-cart" onclick="addToCart(this)">Add to Cart</button>
                 </div>
 
-                <div class="product" data-name="Cuban Silver Chain" data-price="550.00" data-category="necklaces">
-                    <img src="images/men-2.jpg" alt="Silver Chain" class="product-img">
-                    <div class="product-info">
-                        <h3>Cuban Silver Chain</h3>
-                        <span class="description">Classic Cuban silver chain, suitable for daily use.</span>
-                        <span class="price">550.00 EGP</span>
-                        <a href="product-details.html" class="cta-button" style="margin-bottom: 5px; display: block;">View Details</a>
-                        <button class="cta-button">Add to Cart</button>
-                    </div>
                 </div>
-            </div>
+        </section>
+
+    </main>
+
+    <footer id="footer-contact">
+        <h2>Contact Us</h2>
+        <p>Email: <a href="mailto:michaelnagyfouad@gmail.com">michaelnagyfouad@gmail.com</a></p>
+        <div class="contact-numbers">
+            <p>WhatsApp Support: <a href="https://wa.me/201281277953" target="_blank" dir="ltr">01281277953</a></p>
+            <p>Direct Call: <a href="tel:+201281277953" dir="ltr">01281277953</a></p>
         </div>
-    </section>
+        <p class="copyright">&copy; 2025 Laluna Store. All Rights Reserved.</p>
+    </footer>
 
     <script src="app.js"></script>
 </body>

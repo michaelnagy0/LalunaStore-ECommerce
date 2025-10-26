@@ -1,40 +1,99 @@
 <!DOCTYPE html>
-<html lang="en" dir="rtl">
+<html lang="en" dir="ltr">
 <head>
-    <title>Women's Jewelry | Rings, Necklaces, Bracelets | La Luna Store</title> 
-    <link rel="stylesheet" href="styles.css"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="description" content="La Luna - متجر المجوهرات الفاخرة للرجال والنساء. اكتشف تشكيلتنا من الخواتم، القلائد، والأساور المصنوعة يدوياً.">
+<meta name="keywords" content="مجوهرات فاخرة, خواتم رجالي, هدايا نسائية, ذهب, فضة, La Luna, متجر مجوهرات">
+<meta name="author" content="La Luna Team">
+
+<title>La Luna Store | مجوهرات فاخرة للرجال والنساء</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Women's Accessories | Laluna Store</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <section class="products-list">
-        <div class="container">
-            <h1>Women's Jewelry Collection</h1>
+
+    <header>
+        <div class="logo-container">
+            <img src="WhatsApp Image 2025-10-22 at 3.08.32 PM.jpeg" alt="Laluna Store Logo" class="logo">
+        </div>
+        <h2>"Discover What's Missing"</h2>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="men.html">Men</a></li>
+                <li><a href="women.html">Women</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li class="search-box-li">
+                    <input type="text" id="search-input" placeholder="Search products..." class="search-input">
+                    <button class="search-btn">🔍</button>
+                </li>
+                <li><a href="cart.html">🛒 Cart</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="centered-content">
+        
+        <section id="women" class="products-section">
+            <h2>💎 Women's Accessories 👑</h2>
             
-            <div class="products-grid">
-                
-                <div class="product" data-name="Diamond Solitaire Ring" data-price="15000.00" data-category="rings">
-                    <img src="images/women-1.jpg" alt="Diamond Ring" class="product-img">
-                    <div class="product-info">
-                        <h3>Diamond Solitaire Ring</h3>
-                        <span class="description">White gold engagement ring with a pure diamond stone.</span>
-                        <span class="price">15,000.00 EGP</span>
-                        <a href="product-details.html" class="cta-button" style="margin-bottom: 5px; display: block;">View Details</a>
-                        <button class="cta-button">Add to Cart</button>
-                    </div>
+            <ul class="filter-tabs">
+                <li><button class="filter-btn active" data-filter="all">All Items</button></li>
+                <li><button class="filter-btn" data-filter="rings">Rings</button></li>
+                <li><button class="filter-btn" data-filter="bracelets">Bracelets</button></li>
+                <li><button class="filter-btn" data-filter="earrings">Earrings</button></li>
+            </ul>
+            
+            <div class="products-grid" id="women-products-grid">
+                <div class="product" data-category="bracelets" data-name="Elegant Bracelet" data-price="380">
+                    <a href="product-details.html?id=W1" class="product-link">
+                        <img src="placeholder_women_bracelet.jpg" alt="Women's Elegant Bracelet" class="product-img">
+                        <h3>Elegant Bracelet</h3>
+                        <p class="description">**Material:** 18K Gold Plated Brass with Zircon.</p>
+                        <p class="price"><strong>Price: 380 EGP</strong></p>
+                    </a>
+                    <button class="add-to-cart" onclick="addToCart(this)">Add to Cart</button>
                 </div>
 
-                <div class="product" data-name="Moon and Stars Necklace" data-price="950.00" data-category="necklaces">
-                    <img src="images/women-2.jpg" alt="Moon Necklace" class="product-img">
-                    <div class="product-info">
-                        <h3>Moon and Stars Necklace</h3>
-                        <span class="description">Simple and elegant sterling silver necklace.</span>
-                        <span class="price">950.00 EGP</span>
-                        <a href="product-details.html" class="cta-button" style="margin-bottom: 5px; display: block;">View Details</a>
-                        <button class="cta-button">Add to Cart</button>
-                    </div>
+                <div class="product" data-category="earrings" data-name="Crystal Drop Earrings" data-price="250">
+                    <a href="product-details.html?id=W2" class="product-link">
+                        <img src="placeholder_women_earrings.jpg" alt="Women's Crystal Earrings" class="product-img">
+                        <h3>Crystal Drop Earrings</h3>
+                        <p class="description">**Material:** Hypoallergenic Silver with Crystal drops.</p>
+                        <p class="price"><strong>Price: 250 EGP</strong></p>
+                    </a>
+                    <button class="add-to-cart" onclick="addToCart(this)">Add to Cart</button>
                 </div>
-            </div>
+                
+                <div class="product" data-category="rings" data-name="Diamond Solitaire Ring" data-price="550">
+                    <a href="product-details.html?id=W3" class="product-link">
+                        <img src="placeholder_women_ring.jpg" alt="Diamond Solitaire Ring" class="product-img">
+                        <h3>Diamond Solitaire Ring</h3>
+                        <p class="description">**Material:** Rose Gold Plated, AAA Zircon Stone.</p>
+                        <p class="price"><strong>Price: 550 EGP</strong></p>
+                    </a>
+                    <button class="add-to-cart" onclick="addToCart(this)">Add to Cart</button>
+                </div>
+
+                </div>
+        </section>
+
+    </main>
+
+    <footer id="footer-contact">
+        <h2>Contact Us</h2>
+        <p>Email: <a href="mailto:michaelnagyfouad@gmail.com">michaelnagyfouad@gmail.com</a></p>
+        <div class="contact-numbers">
+            <p>WhatsApp Support: <a href="https://wa.me/201281277953" target="_blank" dir="ltr">01281277953</a></p>
+            <p>Direct Call: <a href="tel:+201281277953" dir="ltr">01281277953</a></p>
         </div>
-    </section>
+        <p class="copyright">&copy; 2025 Laluna Store. All Rights Reserved.</p>
+    </footer>
 
     <script src="app.js"></script>
 </body>

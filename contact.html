@@ -1,35 +1,85 @@
 <!DOCTYPE html>
-<html lang="en" dir="rtl">
+<html lang="en" dir="ltr">
 <head>
-    <title>Contact Us | La Luna Store</title> 
-    <link rel="stylesheet" href="styles.css"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="description" content="La Luna - متجر المجوهرات الفاخرة للرجال والنساء. اكتشف تشكيلتنا من الخواتم، القلائد، والأساور المصنوعة يدوياً.">
+<meta name="keywords" content="مجوهرات فاخرة, خواتم رجالي, هدايا نسائية, ذهب, فضة, La Luna, متجر مجوهرات">
+<meta name="author" content="La Luna Team">
+
+<title>La Luna Store | مجوهرات فاخرة للرجال والنساء</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | Laluna Store</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <section class="contact-section">
-        <div class="container">
+
+    <header>
+        <div class="logo-container">
+            <img src="WhatsApp Image 2025-10-22 at 3.08.32 PM.jpeg" alt="Laluna Store Logo" class="logo">
+        </div>
+        <h2>"Discover What's Missing"</h2>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="men.html">Men</a></li>
+                <li><a href="women.html">Women</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li class="search-box-li">
+                    <input type="text" id="search-input" placeholder="Search products..." class="search-input">
+                    <button class="search-btn">🔍</button>
+                </li>
+                <li><a href="cart.html">🛒 Cart</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="centered-content">
+        
+        <section id="contact-page" class="contact-section">
+            <h2>Get In Touch</h2>
+            <p class="contact-intro">We'd love to hear from you. Use the luxurious form below or contact us directly.</p>
             
-            <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST" class="contact-form">
+            <form action="https://formspree.io/f/Your_Formspree_ID" method="POST" class="contact-form">
                 
-                <h2>Contact Us</h2>
-                <p>We are happy to receive your inquiries. (Emails sent to: michaelnagyfouad@gmail.com)</p>
-                
-                <label for="name">Full Name:</label>
-                <input type="text" id="name" name="الاسم" required placeholder="Enter your full name">
+                <label for="c-name">Your Name:</label>
+                <input type="text" id="c-name" name="Sender Name" required>
 
-                <label for="email">Email Address:</label>
-                <input type="email" id="email" name="_replyto" required placeholder="Your email address"> 
+                <label for="c-email">Your Email:</label>
+                <input type="email" id="c-email" name="_replyto" required>
 
-                <label for="message">Message or Inquiry:</label>
-                <textarea id="message" name="الرسالة" rows="6" required placeholder="Write your message here..."></textarea>
+                <label for="c-subject">Subject:</label>
+                <input type="text" id="c-subject" name="Subject">
 
-                <input type="text" name="_gotcha" style="display:none">
-                
+                <label for="c-message">Message:</label>
+                <textarea id="c-message" name="Message" rows="5" required></textarea>
+
                 <button type="submit" class="cta-button">Send Message</button>
             </form>
             
-        </div>
-    </section>
+            <div class="direct-contact-info">
+                <h3>Direct Contact Information</h3>
+                <p><strong>Email Support:</strong> <a href="mailto:michaelnagyfouad@gmail.com">michaelnagyfouad@gmail.com</a></p>
+                <p><strong>WhatsApp:</strong> <a href="https://wa.me/201281277953" target="_blank" dir="ltr">01281277953</a> (Available 24/7)</p>
+                <p><strong>Phone:</strong> <a href="tel:+201281277953" dir="ltr">01281277953</a></p>
+            </div>
+            
+        </section>
+        
+    </main>
 
-    <script src="app.js"></script>
+    <footer id="footer-contact">
+        <h2>Contact Us</h2>
+        <p>Email: <a href="mailto:michaelnagyfouad@gmail.com">michaelnagyfouad@gmail.com</a></p>
+        <div class="contact-numbers">
+            <p>WhatsApp Support: <a href="https://wa.me/201281277953" target="_blank" dir="ltr">01281277953</a></p>
+            <p>Direct Call: <a href="tel:+201281277953" dir="ltr">01281277953</a></p>
+        </div>
+        <p class="copyright">&copy; 2025 Laluna Store. All Rights Reserved.</p>
+    </footer>
+
 </body>
 </html>
