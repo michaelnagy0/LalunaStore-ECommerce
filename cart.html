@@ -1,56 +1,53 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cart & Checkout | Laluna Store</title>
-    <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+    
+    <meta name="description" content="مراجعة سلة التسوق وتأكيد الطلبات من متجر La Luna.">
+    <meta name="keywords" content="سلة التسوق, عربة المشتريات, تأكيد الطلب, دفع, شحن">
+    <meta name="author" content="La Luna Team">
+    
+    <title>سلة التسوق | La Luna Store</title> 
+    
+    <link rel="stylesheet" href="styles.css"> 
 </head>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<meta name="description" content="La Luna - متجر المجوهرات الفاخرة للرجال والنساء. اكتشف تشكيلتنا من الخواتم، القلائد، والأساور المصنوعة يدوياً.">
-<meta name="keywords" content="مجوهرات فاخرة, خواتم رجالي, هدايا نسائية, ذهب, فضة, La Luna, متجر مجوهرات">
-<meta name="author" content="La Luna Team">
-
-<title>La Luna Store | مجوهرات فاخرة للرجال والنساء</title>
 <body>
 
     <header>
-        <div class="logo-container">
-            <img src="WhatsApp Image 2025-10-22 at 3.08.32 PM.jpeg" alt="Laluna Store Logo" class="logo">
+        <div class="container">
+            <nav>
+                <div class="logo">La Luna</div>
+                <ul>
+                    <li><a href="index.html">الرئيسية</a></li>
+                    <li><a href="women.html">مجوهرات نسائية</a></li>
+                    <li><a href="men.html">مجوهرات رجالية</a></li>
+                    <li><a href="contact.html">تواصل معنا</a></li>
+                </ul>
+                <div class="search-cart">
+                    <div class="search-bar">
+                        <input type="text" id="search-input" placeholder="ابحث عن منتج...">
+                        <button class="search-btn">🔍</button>
+                    </div>
+                    <a href="cart.html" class="cart-icon active">🛒</a>
+                </div>
+            </nav>
         </div>
-        <h2>"Discover What's Missing"</h2>
-        <nav>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="men.html">Men</a></li>
-                <li><a href="women.html">Women</a></li>
-                <li><a href="contact.html">Contact</a></li>
-                <li class="search-box-li">
-                    <input type="text" id="search-input" placeholder="Search products..." class="search-input">
-                    <button class="search-btn">🔍</button>
-                </li>
-                <li><a href="cart.html">🛒 Cart</a></li>
-            </ul>
-        </nav>
     </header>
 
-    <main class="centered-content">
-        
-        <section id="checkout" class="cart-section">
-            <h2>🛒 Your Cart and Checkout</h2>
+    <section class="cart-content">
+        <div class="container">
+            <h1>سلة التسوق</h1>
             
-            <div class="cart-items-table">
-                <table>
+            <div class="cart-table-container">
+                <table class="cart-table">
                     <thead>
                         <tr>
-                            <th style="width: 40%;">Product</th>
-                            <th style="width: 15%;">Qty</th>
-                            <th style="width: 15%;">Price</th>
-                            <th style="width: 20%;">Subtotal</th>
-                            <th style="width: 10%;">Remove</th>
+                            <th>المنتج</th>
+                            <th>الكمية</th>
+                            <th>السعر للوحدة</th>
+                            <th>الإجمالي</th>
+                            <th>حذف</th>
                         </tr>
                     </thead>
                     <tbody id="cart-table-body">
@@ -58,148 +55,40 @@
                 </table>
             </div>
 
-            <div class="cart-totals">
-                <p>Shipping Fee: <span id="shipping-fee">0.00 EGP</span></p>
-                <p>Cart Subtotal: <span id="cart-subtotal">0.00 EGP</span></p>
-                <p class="total-price-final">Order Total: <span id="final-total">0.00 EGP</span></p>
+            <div class="cart-summary">
+                <h3>ملخص الطلب</h3>
+                <div class="summary-item">
+                    <span>الإجمالي الفرعي:</span>
+                    <strong id="cart-subtotal">0.00 EGP</strong>
+                </div>
+                <div class="summary-item">
+                    <span>رسوم الشحن:</span>
+                    <strong id="shipping-fee">0.00 EGP</strong>
+                </div>
+                <div class="summary-item summary-total">
+                    <span>الإجمالي الكلي:</span>
+                    <strong id="final-total">0.00 EGP</strong>
+                </div>
+                
+                <button id="whatsapp-order-btn" class="cta-button">طلب عبر واتساب 💬</button>
+                
+                <button class="cta-button checkout-button" style="background-color: var(--color-dark-gray); margin-top: 10px;">إتمام الطلب (قريباً)</button>
             </div>
-
-
-            <form action="https://formspree.io/f/Your_Formspree_ID" method="POST" class="checkout-form" id="checkout-form" enctype="multipart/form-data">
-                
-                <fieldset class="shipping-details">
-                    <legend>1. Shipping Details</legend>
-                    <label for="name">Full Name:</label>
-                    <input type="text" id="name" name="Full Name" required>
-
-                    <label for="email">Email Address:</label>
-                    <input type="email" id="email" name="_replyto" required>
-
-                    <label for="address">Full Address (City, Street, Building No.):</label>
-                    <input type="text" id="address" name="Shipping Address" required>
-
-                    <label for="phone">Phone Number (For Call/WhatsApp):</label>
-                    <input type="tel" id="phone" name="Phone Number" required>
-                </fieldset>
-                
-                <fieldset class="payment-details">
-                    <legend>2. Select Payment Method</legend>
-                    
-                    <div class="payment-options">
-                        <input type="radio" id="cash" name="Payment Method" value="Cash On Delivery" required>
-                        <label for="cash">Cash On Delivery 💵</label><br>
-
-                        <input type="radio" id="instapay" name="Payment Method" value="InstaPay/Orange Cash">
-                        <label for="instapay">InstaPay / Orange Cash (Pre-paid)</label><br>
-                    </div>
-
-                    <div id="transfer-details" style="display: none; margin-top: 15px; border: 1px dashed var(--color-gold); padding: 15px;">
-                        <h4>Please use the following numbers for transfer:</h4>
-                        
-                        <div class="transfer-number-group">
-                            <p><strong>InstaPay / Orange Cash:</strong> <span id="num1" dir="ltr">01281277953</span> 
-                            <button type="button" class="copy-button" data-number="01281277953">Copy</button></p>
-                        </div>
-                        
-                        <label for="proof">Upload Transfer Proof Image (Optional):</label>
-                        <input type="file" id="proof" name="Transfer Proof" accept="image/*">
-                        
-                    </div>
-                </fieldset>
-                
-                <button type="submit" class="checkout-button cta-button">Confirm Order and Pay</button>
-
-                <button type="button" class="whatsapp-button cta-button" id="whatsapp-order-btn" style="background-color: #25D366; border-color: #25D366;">Send Order via WhatsApp</button>
-                
-                <textarea name="Order Details" id="order-details-summary" style="display:none;"></textarea>
-            </form>
-        </section>
-        
-    </main>
-
-    <footer id="footer-contact">
-        <h2>Contact Us</h2>
-        <p>Email: <a href="mailto:michaelnagyfouad@gmail.com">michaelnagyfouad@gmail.com</a></p>
-        <div class="contact-numbers">
-            <p>WhatsApp Support: <a href="https://wa.me/201281277953" target="_blank" dir="ltr">01281277953</a></p>
-            <p>Direct Call: <a href="tel:+201281277953" dir="ltr">01281277953</a></p>
+            
         </div>
-        <p class="copyright">&copy; 2025 Laluna Store. All Rights Reserved.</p>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 La Luna Store. جميع الحقوق محفوظة.</p>
+            <p>
+                <a href="index.html">الرئيسية</a> |
+                <a href="contact.html">تواصل معنا</a> |
+                <a href="cart.html">سلة التسوق</a>
+            </p>
+        </div>
     </footer>
 
     <script src="app.js"></script>
-    <script>
-        // هذا السكريبت الصغير يشغل وظائف النسخ والواتس آب الخاصة بصفحة العربة
-        document.addEventListener('DOMContentLoaded', () => {
-            const transferDetails = document.getElementById('transfer-details');
-            const paymentOptions = document.getElementsByName('Payment Method');
-            const copyButtons = document.querySelectorAll('.copy-button');
-            const whatsappBtn = document.getElementById('whatsapp-order-btn');
-            const checkoutForm = document.getElementById('checkout-form');
-            const orderSummaryInput = document.getElementById('order-details-summary');
-
-
-            // 1. وظيفة إظهار/إخفاء تفاصيل التحويل
-            paymentOptions.forEach(radio => {
-                radio.addEventListener('change', () => {
-                    transferDetails.style.display = (radio.value === 'InstaPay/Orange Cash') ? 'block' : 'none';
-                });
-            });
-
-            // 2. وظيفة نسخ الرقم
-            copyButtons.forEach(button => {
-                button.addEventListener('click', () => {
-                    const numberToCopy = button.getAttribute('data-number');
-                    navigator.clipboard.writeText(numberToCopy).then(() => {
-                        button.textContent = 'Copied!';
-                        setTimeout(() => {
-                            button.textContent = 'Copy';
-                        }, 2000);
-                    }).catch(err => {
-                        console.error('Failed to copy:', err);
-                    });
-                });
-            });
-
-            // 3. تحديث تفاصيل الطلب في الحقل المخفي قبل الإرسال (للإيميل)
-            checkoutForm.addEventListener('submit', () => {
-                const cartDetails = getCart(); // دالة موجودة في app.js
-                const subtotal = document.getElementById('cart-subtotal').textContent;
-                const total = document.getElementById('final-total').textContent;
-                
-                let summaryText = "--- PRODUCTS ---\n";
-                cartDetails.forEach(item => {
-                    summaryText += `${item.name} | Qty: ${item.qty} | Price: ${item.price} EGP\n`;
-                });
-                summaryText += `\n--- TOTALS ---\nSubtotal: ${subtotal}\nShipping: ${document.getElementById('shipping-fee').textContent}\nFINAL TOTAL: ${total}\n`;
-                
-                orderSummaryInput.value = summaryText; // وضع التفاصيل في الحقل المخفي
-            });
-            
-            // 4. وظيفة إرسال الطلب عبر واتس آب
-            whatsappBtn.addEventListener('click', (e) => {
-                e.preventDefault(); 
-                
-                const name = document.getElementById('name').value || "N/A";
-                const address = document.getElementById('address').value || "N/A";
-                const phone = document.getElementById('phone').value || "N/A";
-                const total = document.getElementById('final-total').textContent;
-                const payment = document.querySelector('input[name="Payment Method"]:checked')?.value || "Cash On Delivery";
-                const cartDetails = getCart(); // دالة موجودة في app.js
-
-                let productList = "";
-                cartDetails.forEach(item => {
-                    productList += `- ${item.name} (x${item.qty})\n`; // تم تبسيط الرسالة
-                });
-
-
-                // تنسيق رسالة الواتس آب
-                const message = `*NEW LALUNA ORDER REQUEST (WEB)*\n\n*CUSTOMER INFO:*\nName: ${name}\nPhone: ${phone}\nAddress: ${address}\nPayment: ${payment}\n\n*ORDER ITEMS:*\n${productList}\n\n*TOTAL DUE: ${total}*`;
-                
-                const whatsappUrl = `https://wa.me/201281277953?text=${encodeURIComponent(message)}`;
-                window.open(whatsappUrl, '_blank');
-            });
-        });
-    </script>
 </body>
 </html>

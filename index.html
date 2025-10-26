@@ -1,81 +1,97 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Laluna Store | Discover What's Missing</title>
-    <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+    
+    <meta name="description" content="La Luna - متجر المجوهرات الفاخرة للرجال والنساء. اكتشف تشكيلتنا من الخواتم، القلائد، والأساور المصنوعة يدوياً.">
+    <meta name="keywords" content="مجوهرات فاخرة, خواتم رجالي, هدايا نسائية, ذهب, فضة, La Luna, متجر مجوهرات">
+    <meta name="author" content="La Luna Team">
+    
+    <title>La Luna Store | مجوهرات فاخرة للرجال والنساء</title> 
+    
+    <link rel="stylesheet" href="styles.css"> 
 </head>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<meta name="description" content="La Luna - متجر المجوهرات الفاخرة للرجال والنساء. اكتشف تشكيلتنا من الخواتم، القلائد، والأساور المصنوعة يدوياً.">
-<meta name="keywords" content="مجوهرات فاخرة, خواتم رجالي, هدايا نسائية, ذهب, فضة, La Luna, متجر مجوهرات">
-<meta name="author" content="La Luna Team">
-
-<title>La Luna Store | مجوهرات فاخرة للرجال والنساء</title>
 <body>
 
     <header>
-        <div class="logo-container">
-            <img src="WhatsApp Image 2025-10-22 at 3.08.32 PM.jpeg" alt="Laluna Store Logo" class="logo">
+        <div class="container">
+            <nav>
+                <div class="logo">La Luna</div>
+                <ul>
+                    <li><a href="index.html" class="active">الرئيسية</a></li>
+                    <li><a href="women.html">مجوهرات نسائية</a></li>
+                    <li><a href="men.html">مجوهرات رجالية</a></li>
+                    <li><a href="contact.html">تواصل معنا</a></li>
+                </ul>
+                <div class="search-cart">
+                    <div class="search-bar">
+                        <input type="text" id="search-input" placeholder="ابحث عن منتج...">
+                        <button class="search-btn">🔍</button>
+                    </div>
+                    <a href="cart.html" class="cart-icon">🛒</a>
+                </div>
+            </nav>
         </div>
-        <h2>"Discover What's Missing"</h2>
-        
-        <nav>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="men.html">Men</a></li>
-                <li><a href="women.html">Women</a></li>
-                <li><a href="contact.html">Contact</a></li>
-                <li class="search-box-li">
-                    <input type="text" id="search-input" placeholder="Search products..." class="search-input">
-                    <button class="search-btn">🔍</button>
-                </li>
-                <li><a href="cart.html">🛒 Cart</a></li>
-            </ul>
-        </nav>
     </header>
 
-    <main>
-        
-        <section id="home" class="hero-section">
-            <div class="hero-content">
-                <h1>Welcome to Laluna's World of Elegance</h1>
-                <p>Luxury meets style. Unique pieces for men and women with a gold and silver touch.</p>
-                <a href="men.html" class="cta-button">Shop Men's Collection</a>
-                <a href="women.html" class="cta-button">Shop Women's Collection</a>
-            </div>
-        </section>
-        
-        <section id="featured">
-            <h2>Featured Categories</h2>
-            <div class="category-cards">
-                <div class="card men-card">
-                    <h3>Men's Accessories</h3>
-                    <p>Watches, Rings, Bracelets.</p>
-                    <a href="men.html" class="cta-card-button">Shop Now</a>
-                </div>
-                <div class="card women-card">
-                    <h3>Women's Accessories</h3>
-                    <p>Necklaces, Earrings, Bangles.</p>
-                    <a href="women.html" class="cta-card-button">Shop Now</a>
-                </div>
-            </div>
-        </section>
-
-    </main>
-
-    <footer id="footer-contact">
-        <h2>Contact Us</h2>
-        <p>Email: <a href="mailto:michaelnagyfouad@gmail.com">michaelnagyfouad@gmail.com</a></p>
-        <div class="contact-numbers">
-            <p>WhatsApp Support: <a href="https://wa.me/201281277953" target="_blank" dir="ltr">01281277953</a></p>
-            <p>Direct Call: <a href="tel:+201281277953" dir="ltr">01281277953</a></p>
+    <section class="hero">
+        <div class="container">
+            <h1>أناقة لا مثيل لها، جودة لا تضاهى</h1>
+            <p>اكتشف تشكيلة La Luna الفريدة من المجوهرات الفاخرة المصنوعة بعناية.</p>
+            <a href="women.html" class="cta-button">تسوق الآن</a>
         </div>
-        <p class="copyright">&copy; 2025 Laluna Store. All Rights Reserved.</p>
+    </section>
+
+    <section class="featured-products">
+        <div class="container">
+            <h2>منتجات مميزة</h2>
+            <div class="products-grid">
+                
+                <div class="product" data-name="خاتم الذهب الكلاسيكي" data-price="1200.00" data-category="rings">
+                    <img src="images/product-1.jpg" alt="خاتم ذهب" class="product-img">
+                    <div class="product-info">
+                        <h3>خاتم الذهب الكلاسيكي</h3>
+                        <span class="description">خاتم أنيق من الذهب عيار 21، تصميم فريد ومتقن.</span>
+                        <span class="price">1,200.00 EGP</span>
+                        <button class="cta-button">أضف للسلة</button>
+                    </div>
+                </div>
+
+                <div class="product" data-name="قلادة الزمرد الفاخرة" data-price="2500.50" data-category="necklaces">
+                    <img src="images/product-2.jpg" alt="قلادة زمرد" class="product-img">
+                    <div class="product-info">
+                        <h3>قلادة الزمرد الفاخرة</h3>
+                        <span class="description">قلادة فضية مرصعة بأحجار الزمرد الأصلية.</span>
+                        <span class="price">2,500.50 EGP</span>
+                        <button class="cta-button">أضف للسلة</button>
+                    </div>
+                </div>
+
+                <div class="product" data-name="ساعة جلد رجالية فاخرة" data-price="950.00" data-category="watches">
+                    <img src="images/product-3.jpg" alt="ساعة جلد رجالية" class="product-img">
+                    <div class="product-info">
+                        <h3>ساعة جلد رجالية فاخرة</h3>
+                        <span class="description">ساعة بتصميم كلاسيكي، سوار من الجلد الطبيعي.</span>
+                        <span class="price">950.00 EGP</span>
+                        <button class="cta-button">أضف للسلة</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 La Luna Store. جميع الحقوق محفوظة.</p>
+            <p>
+                <a href="index.html">الرئيسية</a> |
+                <a href="contact.html">تواصل معنا</a> |
+                <a href="cart.html">سلة التسوق</a>
+            </p>
+        </div>
     </footer>
 
+    <script src="app.js"></script>
 </body>
 </html>

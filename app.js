@@ -1,25 +1,16 @@
 /**
  * * ملف JavaScript: app.js
- * * هذا هو الكود النهائي والكامل لوظائف الموقع التفاعلية:
- * 1. إدارة سلة التسوق (Add/Remove/Update Quantity) وحفظها في ذاكرة المتصفح (Local Storage).
- * 2. عرض محتوى سلة التسوق في صفحة cart.html وحساب الإجماليات.
- * 3. تفعيل فلاتر المنتجات في صفحات men.html و women.html.
- * 4. تفعيل وظيفة البحث والتصفية.
- * 5. إضافة وظيفة الطلب عبر WhatsApp مع تفاصيل الدفع.
- * 6. ربط سلس لأزرار "Add to Cart" في كل الصفحات.
+ * * الكود النهائي لوظائف الموقع التفاعلية (سلة التسوق، البحث، واتساب).
  * */
 
 // --------------------------------------------------------
-// المتغيرات الثابتة - يرجى مراجعتها وتغييرها
+// المتغيرات الثابتة - تم تحديثها ببياناتك
 // --------------------------------------------------------
 
 const SHIPPING_FEE = 50.00; // قيمة الشحن الثابتة
-// !!! يرجى تغيير هذا الرقم إلى رقمك الخاص لـ WhatsApp !!!
-const PHONE_NUMBER = "+201012345678"; 
-
-// 💥 أرقام خدمات الدفع - يرجى تغييرها إلى أرقامك الحقيقية
-const INSTAPAY_NUMBER = "01123456789"; 
-const ORANGE_CASH_NUMBER = "01234567890";
+const PHONE_NUMBER = "+201281277953"; // رقم الواتساب الخاص بك
+const INSTAPAY_NUMBER = "01281277953"; // رقم InstaPay الخاص بك
+const ORANGE_CASH_NUMBER = "01280771175"; // رقم Orange Cash الخاص بك
 
 // --------------------------------------------------------
 // 1. وظائف سلة التسوق (Cart Functionality)
@@ -34,15 +25,13 @@ function saveCart(cart) {
 }
 
 /**
- * دالة إضافة المنتج للعربة
+ * دالة إضافة المنتج للعربة - تعمل بسلاسة من أي صفحة
  * @param {HTMLElement} button - زر الإضافة
  */
 function addToCart(button) {
     const productElement = button.closest('.product');
     const name = productElement.getAttribute('data-name');
     const price = parseFloat(productElement.getAttribute('data-price'));
-    
-    // محاولة جلب صورة المنتج من عنصر img داخل البطاقة
     const imgElement = productElement.querySelector('img');
     const img = imgElement ? imgElement.src : 'placeholder.jpg'; 
 
@@ -52,22 +41,13 @@ function addToCart(button) {
     if (existingItem) {
         existingItem.qty += 1;
     } else {
-        cart.push({
-            name: name,
-            price: price,
-            img: img,
-            qty: 1
-        });
+        cart.push({ name: name, price: price, img: img, qty: 1 });
     }
 
     saveCart(cart);
-    alert(`${name} has been added to your cart!`);
+    alert(`تم إضافة ${name} إلى سلة التسوق!`);
 }
 
-/**
- * دالة لحذف منتج بالكامل من العربة
- * @param {string} name - اسم المنتج المراد حذفه
- */
 function removeItemFromCart(name) {
     let cart = getCart();
     cart = cart.filter(item => item.name !== name);
@@ -75,19 +55,12 @@ function removeItemFromCart(name) {
     displayCart(); 
 }
 
-
-/**
- * دالة لتحديث كمية المنتج (في cart.html)
- * @param {string} name - اسم المنتج
- * @param {number} newQty - الكمية الجديدة
- */
 function updateCartQuantity(name, newQty) {
     let cart = getCart();
     const item = cart.find(i => i.name === name);
 
     if (item) {
         newQty = parseInt(newQty);
-
         if (newQty > 0) {
             item.qty = newQty;
         } else {
@@ -99,10 +72,6 @@ function updateCartQuantity(name, newQty) {
     displayCart(); 
 }
 
-
-/**
- * دالة لعرض محتوى العربة في جدول صفحة cart.html
- */
 function displayCart() {
     const tableBody = document.getElementById('cart-table-body');
     const subtotalElement = document.getElementById('cart-subtotal');
@@ -176,25 +145,18 @@ function displayCart() {
     setupCartEventListeners(); 
 }
 
-/**
- * دالة لربط معالجات الأحداث لحقول الكمية وأزرار الحذف بعد كل عرض للجدول.
- */
 function setupCartEventListeners() {
-    // 1. ربط حدث تغيير الكمية
     document.querySelectorAll('.cart-qty-input').forEach(input => {
-        // نستخدم removeEventListener لتجنب تكرار ربط الأحداث
         input.removeEventListener('change', handleQuantityChange); 
         input.addEventListener('change', handleQuantityChange);
     });
 
-    // 2. ربط حدث زر الحذف
     document.querySelectorAll('.remove-btn').forEach(button => {
         button.removeEventListener('click', handleRemoveClick); 
         button.addEventListener('click', handleRemoveClick);
     });
 }
 
-// معالج حدث لتغيير الكمية
 function handleQuantityChange(event) {
     const input = event.target;
     const name = input.getAttribute('data-product-name');
@@ -202,7 +164,6 @@ function handleQuantityChange(event) {
     updateCartQuantity(name, newQty);
 }
 
-// معالج حدث لزر الحذف
 function handleRemoveClick(event) {
     const button = event.target;
     const name = button.getAttribute('data-product-name');
@@ -247,9 +208,6 @@ function setupFilterTabs() {
 // 3. وظائف البحث (Search Functionality)
 // --------------------------------------------------------
 
-/**
- * الدالة المسؤولة عن معالجة عملية البحث وتوجيه المستخدم أو تصفية المنتجات.
- */
 function handleSearch() {
     const searchInput = document.getElementById('search-input');
     const query = searchInput.value.trim().toLowerCase();
@@ -264,7 +222,6 @@ function handleSearch() {
     const isMenQuery = query.includes('رجالي') || query.includes('men') || query.includes('رجل') || query.includes('سلسلة') || query.includes('محفظة');
     const isWomenQuery = query.includes('نسائي') || query.includes('women') || query.includes('سوار') || query.includes('قلادة') || query.includes('حلق');
     
-    // 1. إذا كنا في صفحة لا تحتوي على منتجات، نقوم بإعادة التوجيه
     if (currentPage === 'index.html' || currentPage === '' || currentPage === 'contact.html' || currentPage === 'cart.html' || currentPage === 'product-details.html') {
         let targetPage = 'men.html'; 
         
@@ -278,16 +235,11 @@ function handleSearch() {
         return;
     }
 
-    // 2. إذا كنا بالفعل في صفحة المنتجات (men.html أو women.html)
     if (currentPage === 'men.html' || currentPage === 'women.html') {
         applySearchFilter(query);
     }
 }
 
-/**
- * دالة تقوم بتصفية المنتجات في الصفحة الحالية بناءً على كلمة البحث.
- * @param {string} query - كلمة البحث
- */
 function applySearchFilter(query) {
     const productGrid = document.querySelector('.products-grid');
     if (!productGrid) return; 
@@ -307,7 +259,6 @@ function applySearchFilter(query) {
         }
     });
 
-    // إزالة تحديد الفلتر النشط
     document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
     
     const resultsMessage = document.getElementById('search-results-message');
@@ -315,14 +266,13 @@ function applySearchFilter(query) {
         resultsMessage.textContent = resultsFound === 0 ? `لم يتم العثور على نتائج لـ "${query}"` : `عرض ${resultsFound} نتائج لـ "${query}"`;
     }
 
-    // تنظيف حقل البحث بعد التصفية
     const searchInput = document.getElementById('search-input');
     if(searchInput) searchInput.value = '';
 }
 
 
 // --------------------------------------------------------
-// 4. وظيفة الطلب عبر WhatsApp (المعدلة)
+// 4. وظيفة الطلب عبر WhatsApp (مع تفاصيل الدفع)
 // --------------------------------------------------------
 
 function generateWhatsAppOrderLink() {
@@ -338,7 +288,6 @@ function generateWhatsAppOrderLink() {
     cart.forEach((item, index) => {
         const itemTotal = item.price * item.qty;
         subtotal += itemTotal;
-        
         message += `${index + 1}. ${item.name} (السعر: ${item.price.toFixed(2)} جنيه) × ${item.qty} = ${itemTotal.toFixed(2)} جنيه\n`;
     });
 
@@ -347,9 +296,8 @@ function generateWhatsAppOrderLink() {
     message += "\n-------------------------------------\n";
     message += `الإجمالي الفرعي: ${subtotal.toFixed(2)} جنيه\n`;
     message += `رسوم الشحن: ${SHIPPING_FEE.toFixed(2)} جنيه\n`;
-    message += `الإجمالي الكلي: *${finalTotal.toFixed(2)} جنيه*\n`; // تم إبراز الإجمالي
+    message += `الإجمالي الكلي: *${finalTotal.toFixed(2)} جنيه*\n`; 
     
-    // 💥 الجزء المضاف: تعليمات الدفع وإرسال الإيصال
     message += "\n=====================================\n";
     message += "✅ طريقة الدفع: تحويل المبلغ المطلوب:\n";
     
@@ -362,10 +310,7 @@ function generateWhatsAppOrderLink() {
     message += "\n=====================================\n";
 
 
-    // تشفير الرسالة لعنوان URL
     const encodedMessage = encodeURIComponent(message);
-    
-    // إنشاء وفتح الرابط
     const whatsappLink = `https://wa.me/${PHONE_NUMBER.replace('+', '')}?text=${encodedMessage}`;
     window.open(whatsappLink, '_blank');
 }
@@ -381,7 +326,6 @@ document.addEventListener('DOMContentLoaded', () => {
     if (document.getElementById('cart-table-body')) {
         displayCart();
         
-        // ربط زر الطلب عبر الواتساب 
         const whatsappBtn = document.getElementById('whatsapp-order-btn');
         if (whatsappBtn) {
             whatsappBtn.addEventListener('click', generateWhatsAppOrderLink);
@@ -390,7 +334,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 💥 ربط سلس لجميع أزرار "Add to Cart" في كل صفحات المنتجات
     document.querySelectorAll('.product .cta-button').forEach(button => {
-        // نستخدم removeEventListener و addEventListener لمنع تكرار الربط
         button.removeEventListener('click', (e) => addToCart(e.currentTarget));
         button.addEventListener('click', (e) => {
             e.preventDefault(); 
@@ -401,13 +344,11 @@ document.addEventListener('DOMContentLoaded', () => {
     // 2. تشغيل فلاتر المنتجات إذا كنا في صفحات المنتجات
     setupFilterTabs();
     
-    // 3. ربط وظيفة البحث بزر البحث (🔍)
+    // 3. ربط وظيفة البحث
     const searchButton = document.querySelector('.search-btn');
     if (searchButton) {
         searchButton.addEventListener('click', handleSearch);
     }
-
-    // 4. ربط وظيفة البحث بضغط Enter في حقل الإدخال
     const searchInput = document.getElementById('search-input');
     if (searchInput) {
         searchInput.addEventListener('keydown', (event) => {
@@ -418,7 +359,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // 5. معالجة البحث إذا تم القدوم للصفحة عبر رابط بحث
+    // 4. معالجة البحث الأولي من رابط
     const urlParams = new URLSearchParams(window.location.search);
     const initialQuery = urlParams.get('search');
     

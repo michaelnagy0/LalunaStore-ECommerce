@@ -1,103 +1,91 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="ar" dir="rtl">
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<meta name="description" content="La Luna - متجر المجوهرات الفاخرة للرجال والنساء. اكتشف تشكيلتنا من الخواتم، القلائد، والأساور المصنوعة يدوياً.">
-<meta name="keywords" content="مجوهرات فاخرة, خواتم رجالي, هدايا نسائية, ذهب, فضة, La Luna, متجر مجوهرات">
-<meta name="author" content="La Luna Team">
-
-<title>La Luna Store | مجوهرات فاخرة للرجال والنساء</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Product Details | Laluna Store</title>
-    <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+    
+    <meta name="description" content="تفاصيل خاتم فضة القمر الساطع، مجوهرات La Luna الفاخرة. اطلع على المواصفات والأسعار.">
+    <meta name="keywords" content="خاتم فضة, تفاصيل المنتج, خاتم القمر الساطع, مجوهرات رجالية, La Luna Store">
+    <meta name="author" content="La Luna Team">
+    
+    <title>تفاصيل المنتج | La Luna Store</title> 
+    
+    <link rel="stylesheet" href="styles.css"> 
 </head>
 <body>
 
     <header>
-        <div class="logo-container">
-            <img src="WhatsApp Image 2025-10-22 at 3.08.32 PM.jpeg" alt="Laluna Store Logo" class="logo">
+        <div class="container">
+            <nav>
+                <div class="logo">La Luna</div>
+                <ul>
+                    <li><a href="index.html">الرئيسية</a></li>
+                    <li><a href="women.html">مجوهرات نسائية</a></li>
+                    <li><a href="men.html">مجوهرات رجالية</a></li>
+                    <li><a href="contact.html">تواصل معنا</a></li>
+                </ul>
+                <div class="search-cart">
+                    <div class="search-bar">
+                        <input type="text" id="search-input" placeholder="ابحث عن منتج...">
+                        <button class="search-btn">🔍</button>
+                    </div>
+                    <a href="cart.html" class="cart-icon">🛒</a>
+                </div>
+            </nav>
         </div>
-        <h2>"Discover What's Missing"</h2>
-        <nav>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="men.html">Men</a></li>
-                <li><a href="women.html">Women</a></li>
-                <li><a href="contact.html">Contact</a></li>
-                <li class="search-box-li">
-                    <input type="text" id="search-input" placeholder="Search products..." class="search-input">
-                    <button class="search-btn">🔍</button>
-                </li>
-                <li><a href="cart.html">🛒 Cart</a></li>
-            </ul>
-        </nav>
     </header>
 
-    <main class="centered-content">
-        <section id="product-details-page" class="product-details-section">
-            <h2 class="product-name">Royal Men's Ring - The Crown Jewel</h2>
+    <section class="product-details-content">
+        <div class="container">
             
-            <div class="details-container">
-                <div class="product-images">
-                    <img src="placeholder_men_ring.jpg" alt="Main Product Image" class="main-image">
-                    <div class="thumbnail-images">
-                        <img src="placeholder_men_ring.jpg" alt="Product Thumbnail 1">
-                        <img src="placeholder_men_ring.jpg" alt="Product Thumbnail 2">
-                        </div>
+            <div class="details-container product-detail-card" 
+                 data-name="خاتم فضة القمر الساطع" 
+                 data-price="850.00" 
+                 data-category="rings">
+                
+                <div class="details-image">
+                    <img src="images/product-detail-example.jpg" alt="صورة خاتم القمر الساطع">
                 </div>
-
-                <div class="product-info-details">
-                    <p class="product-price-details"><strong>Price: 450 EGP</strong></p>
-                    <p class="stock-status">In Stock</p>
+                
+                <div class="details-info">
+                    <h1>خاتم فضة "القمر الساطع"</h1>
+                    <span class="price">850.00 EGP</span>
                     
-                    <p class="product-description-full">
-                        This is the full, detailed description of the product. It should include all specifications like:
-                        <br>
-                        - **Material:** 925 Sterling Silver, 18K Gold Plated.
-                        <br>
-                        - **Stone:** Natural Black Agate.
-                        <br>
-                        - **Weight:** 15 grams.
-                        <br>
-                        - **Available Sizes:** 7, 8, 9, 10.
-                    </p>
-
-                    <div class="product-options">
-                        <label for="size-select">Select Size:</label>
-                        <select id="size-select">
-                            <option value="7">Size 7</option>
-                            <option value="8">Size 8</option>
-                            <option value="9">Size 9</option>
-                        </select>
-                        <label for="qty-input" style="margin-left: 20px;">Quantity:</label>
-                        <input type="number" id="qty-input" value="1" min="1" style="width: 60px; text-align: center;">
+                    <p>خاتم فضة إسترليني عيار 925، تصميم عصري ومريح، مرصع بفص زركون أزرق لامع. مثالي للهدايا أو للاستخدام اليومي.</p>
+                    
+                    <h3>المواصفات:</h3>
+                    <ul>
+                        <li>**المعدن:** فضة إسترليني عيار 925</li>
+                        <li>**الحجر:** زركون عالي الجودة</li>
+                        <li>**اللون:** فضي وأزرق</li>
+                        <li>**الوزن:** 12 جرام تقريباً</li>
+                    </ul>
+                    
+                    <div class="quantity-selector">
+                        <label for="qty-input">الكمية:</label>
+                        <input type="number" id="qty-input" value="1" min="1">
                     </div>
                     
-                    <button class="add-to-cart cta-button" style="width: 100%; margin-top: 20px;" onclick="alert('Product added to cart from details page!')">Add to Cart</button>
-                    
-                    <div class="return-policy">
-                        <h4>🔒 Worry-Free Shopping</h4>
-                        <p>We offer a 14-day return and exchange policy. Your satisfaction is guaranteed.</p>
-                    </div>
+                    <button class="cta-button add-to-cart-detail-btn">أضف إلى سلة التسوق</button>
+
                 </div>
             </div>
-        </section>
-    </main>
 
-    <footer id="footer-contact">
-        <h2>Contact Us</h2>
-        <p>Email: <a href="mailto:michaelnagyfouad@gmail.com">michaelnagyfouad@gmail.com</a></p>
-        <div class="contact-numbers">
-            <p>WhatsApp Support: <a href="https://wa.me/201281277953" target="_blank" dir="ltr">01281277953</a></p>
-            <p>Direct Call: <a href="tel:+201281277953" dir="ltr">01281277953</a></p>
         </div>
-        <p class="copyright">&copy; 2025 Laluna Store. All Rights Reserved.</p>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 La Luna Store. جميع الحقوق محفوظة.</p>
+            <p>
+                <a href="index.html">الرئيسية</a> |
+                <a href="contact.html">تواصل معنا</a> |
+                <a href="cart.html">سلة التسوق</a>
+            </p>
+        </div>
     </footer>
 
     <script src="app.js"></script>
-</body>
+    
+    </body>
 </html>
