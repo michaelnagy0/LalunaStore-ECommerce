@@ -1,48 +1,102 @@
 <!DOCTYPE html>
-<html lang="en" dir="rtl">
+<html lang="en" dir="ltr">
 <head>
-    <title>Product Details | La Luna Store</title> 
-    <link rel="stylesheet" href="styles.css"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="description" content="La Luna - متجر المجوهرات الفاخرة للرجال والنساء. اكتشف تشكيلتنا من الخواتم، القلائد، والأساور المصنوعة يدوياً.">
+<meta name="keywords" content="مجوهرات فاخرة, خواتم رجالي, هدايا نسائية, ذهب, فضة, La Luna, متجر مجوهرات">
+<meta name="author" content="La Luna Team">
+
+<title>La Luna Store | مجوهرات فاخرة للرجال والنساء</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Details | Laluna Store</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <section class="product-details-content">
-        <div class="container">
+
+    <header>
+        <div class="logo-container">
+            <img src="WhatsApp Image 2025-10-22 at 3.08.32 PM.jpeg" alt="Laluna Store Logo" class="logo">
+        </div>
+        <h2>"Discover What's Missing"</h2>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="men.html">Men</a></li>
+                <li><a href="women.html">Women</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li class="search-box-li">
+                    <input type="text" id="search-input" placeholder="Search products..." class="search-input">
+                    <button class="search-btn">🔍</button>
+                </li>
+                <li><a href="cart.html">🛒 Cart</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="centered-content">
+        <section id="product-details-page" class="product-details-section">
+            <h2 class="product-name">Royal Men's Ring - The Crown Jewel</h2>
             
-            <div class="details-container product-detail-card" 
-                 data-name="Shining Moon Silver Ring" 
-                 data-price="850.00" 
-                 data-category="rings">
-                
-                <div class="details-image">
-                    <img src="images/product-detail-example.jpg" alt="Shining Moon Silver Ring" class="details-image img">
+            <div class="details-container">
+                <div class="product-images">
+                    <img src="placeholder_men_ring.jpg" alt="Main Product Image" class="main-image">
+                    <div class="thumbnail-images">
+                        <img src="placeholder_men_ring.jpg" alt="Product Thumbnail 1">
+                        <img src="placeholder_men_ring.jpg" alt="Product Thumbnail 2">
+                        </div>
                 </div>
-                
-                <div class="details-info">
-                    <h1>Shining Moon Silver Ring</h1>
-                    <span class="price">850.00 EGP</span>
+
+                <div class="product-info-details">
+                    <p class="product-price-details"><strong>Price: 450 EGP</strong></p>
+                    <p class="stock-status">In Stock</p>
                     
-                    <p>Sterling silver 925 ring, modern and comfortable design, set with a sparkling blue zircon stone. Perfect for gifts or daily use.</p>
-                    
-                    <h3>Specifications:</h3>
-                    <ul>
-                        <li>**Metal:** 925 Sterling Silver</li>
-                        <li>**Stone:** High-Quality Zircon</li>
-                        <li>**Color:** Silver and Blue</li>
-                        <li>**Weight:** Approx. 12 grams</li>
-                    </ul>
-                    
-                    <div class="quantity-selector">
-                        <label for="qty-input">Quantity:</label>
-                        <input type="number" id="qty-input" value="1" min="1">
+                    <p class="product-description-full">
+                        This is the full, detailed description of the product. It should include all specifications like:
+                        <br>
+                        - **Material:** 925 Sterling Silver, 18K Gold Plated.
+                        <br>
+                        - **Stone:** Natural Black Agate.
+                        <br>
+                        - **Weight:** 15 grams.
+                        <br>
+                        - **Available Sizes:** 7, 8, 9, 10.
+                    </p>
+
+                    <div class="product-options">
+                        <label for="size-select">Select Size:</label>
+                        <select id="size-select">
+                            <option value="7">Size 7</option>
+                            <option value="8">Size 8</option>
+                            <option value="9">Size 9</option>
+                        </select>
+                        <label for="qty-input" style="margin-left: 20px;">Quantity:</label>
+                        <input type="number" id="qty-input" value="1" min="1" style="width: 60px; text-align: center;">
                     </div>
                     
-                    <button class="cta-button add-to-cart-detail-btn">Add to Cart</button>
-
+                    <button class="add-to-cart cta-button" style="width: 100%; margin-top: 20px;" onclick="alert('Product added to cart from details page!')">Add to Cart</button>
+                    
+                    <div class="return-policy">
+                        <h4>🔒 Worry-Free Shopping</h4>
+                        <p>We offer a 14-day return and exchange policy. Your satisfaction is guaranteed.</p>
+                    </div>
                 </div>
             </div>
+        </section>
+    </main>
 
+    <footer id="footer-contact">
+        <h2>Contact Us</h2>
+        <p>Email: <a href="mailto:michaelnagyfouad@gmail.com">michaelnagyfouad@gmail.com</a></p>
+        <div class="contact-numbers">
+            <p>WhatsApp Support: <a href="https://wa.me/201281277953" target="_blank" dir="ltr">01281277953</a></p>
+            <p>Direct Call: <a href="tel:+201281277953" dir="ltr">01281277953</a></p>
         </div>
-    </section>
+        <p class="copyright">&copy; 2025 Laluna Store. All Rights Reserved.</p>
+    </footer>
 
     <script src="app.js"></script>
 </body>

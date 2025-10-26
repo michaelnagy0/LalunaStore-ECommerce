@@ -1,6 +1,7 @@
 /**
  * * ملف JavaScript: app.js
  * * المنطق الكامل لمتجر La Luna - الوظائف: سلة التسوق، البحث، واتساب.
+ * * الواجهة إنجليزية، والتعليقات والرسالة النهائية عربية للمطور والعميل.
  * */
 
 // --------------------------------------------------------
@@ -27,7 +28,7 @@ function saveCart(cart) {
 }
 
 /**
- * دالة إضافة المنتج للعربة - تعمل بسلاسة من أي صفحة
+ * دالة إضافة المنتج للعربة - تتعامل مع كمية قطعة واحدة (من شبكة المنتجات) أو كمية محددة (من صفحة التفاصيل)
  * @param {HTMLElement} button - زر الإضافة
  */
 function addToCart(button) {
@@ -35,14 +36,16 @@ function addToCart(button) {
     const name = productElement.getAttribute('data-name'); // اسم المنتج
     const price = parseFloat(productElement.getAttribute('data-price')); // سعر المنتج
 
-    // التأكد من جلب الكمية إذا كانت من صفحة التفاصيل
+    // التحقق من الكمية: 1 من شبكة المنتجات، أو القيمة من حقل الإدخال في صفحة التفاصيل
     let qty = 1;
     const qtyInput = productElement.querySelector('#qty-input');
     if (qtyInput) {
         qty = parseInt(qtyInput.value) || 1;
+        // التأكد من أن الكمية على الأقل 1
+        if (qty < 1) qty = 1;
     }
     
-    // محاولة جلب صورة المنتج
+    // جلب صورة المنتج
     const imgElement = productElement.querySelector('.product-img, .details-image img');
     const img = imgElement ? imgElement.src : 'placeholder.jpg'; 
 
@@ -56,7 +59,7 @@ function addToCart(button) {
     }
 
     saveCart(cart);
-    alert(`Successfully added ${qty} of ${name} to your cart!`); // رسالة بالإنجليزية للمستخدم
+    alert(`Successfully added ${qty} of ${name} to your cart!`); 
 }
 
 function removeItemFromCart(name) {
@@ -75,23 +78,15 @@ function updateCartQuantity(name, newQty) {
         if (newQty > 0) {
             item.qty = newQty;
         } else {
-            removeItemFromCart(name); // حذف إذا أصبحت الكمية صفر
+            removeItemFromCart(name);
             return; 
         }
     }
     saveCart(cart);
-    displayCart(); // إعادة عرض السلة بعد التحديث
+    displayCart(); 
 }
 
-// دالة عرض محتوى العربة في صفحة cart.html (تبقى كما هي)
 function displayCart() {
-    // ... (الكود بالكامل كما هو في الإصدار السابق لـ displayCart) ...
-    // Note: This function depends on English class names in HTML (e.g., 'cart-table-body').
-    
-    // (بما أن هذا الكود طويل وتم إرساله سابقًا، سنتركه بدون تغيير في المنطق هنا)
-    
-    // ------------------------------------------------
-    // هذا الجزء يعرض تفاصيل السلة ويحسب الإجماليات
     const tableBody = document.getElementById('cart-table-body');
     const subtotalElement = document.getElementById('cart-subtotal');
     const shippingFeeElement = document.getElementById('shipping-fee');
@@ -129,7 +124,7 @@ function displayCart() {
         row.innerHTML = `
             <td>
                 <div class="product-info">
-                    <img src="${item.img || 'placeholder.jpg'}" alt="${item.name}">
+                    <img src="${item.img || 'placeholder.jpg'}" alt="${item.name}" style="width: 60px; height: 60px; object-fit: cover; border-radius: 5px;">
                     <span>${item.name}</span>
                 </div>
             </td>
@@ -139,12 +134,12 @@ function displayCart() {
                        min="1" 
                        data-product-name="${item.name}" 
                        class="cart-qty-input" 
-                       style="text-align: center;">
+                       style="text-align: center; width: 50px; padding: 5px;">
             </td>
             <td>${item.price.toFixed(2)} EGP</td>
             <td>${itemTotal.toFixed(2)} EGP</td>
             <td>
-                <button class="remove-btn" data-product-name="${item.name}">❌</button>
+                <button class="remove-btn" data-product-name="${item.name}" style="background: none; border: none; cursor: pointer; font-size: 1.2em; color: #e74c3c;">❌</button>
             </td>
         `;
         tableBody.appendChild(row);
@@ -162,13 +157,39 @@ function displayCart() {
     if(checkoutBtn) checkoutBtn.style.display = 'inline-block';
     
     setupCartEventListeners(); 
-    // ------------------------------------------------
 }
 
-// ... (بقية دوال setupCartEventListeners و handleQuantityChange و handleRemoveClick كما هي) ...
+function setupCartEventListeners() {
+    // إزالة المستمعات القديمة لمنع التكرار
+    document.querySelectorAll('.cart-qty-input').forEach(input => {
+        input.removeEventListener('change', handleQuantityChange); 
+        input.addEventListener('change', handleQuantityChange);
+    });
+
+    document.querySelectorAll('.remove-btn').forEach(button => {
+        button.removeEventListener('click', handleRemoveClick); 
+        button.addEventListener('click', handleRemoveClick);
+    });
+}
+
+function handleQuantityChange(event) {
+    const input = event.target;
+    const name = input.getAttribute('data-product-name');
+    const newQty = input.value;
+    updateCartQuantity(name, newQty);
+}
+
+function handleRemoveClick(event) {
+    const button = event.target;
+    const name = button.getAttribute('data-product-name');
+    if (confirm(`Are you sure you want to remove ${name} from the cart?`)) {
+        removeItemFromCart(name);
+    }
+}
+
 
 // --------------------------------------------------------
-// 4. وظيفة الطلب عبر WhatsApp (مع تفاصيل الدفع) - تم تحديث اللغة
+// 2. وظيفة الطلب عبر WhatsApp (مع تفاصيل الدفع) - رسالة عربية واضحة
 // --------------------------------------------------------
 
 function generateWhatsAppOrderLink() {
@@ -179,7 +200,7 @@ function generateWhatsAppOrderLink() {
     }
 
     let subtotal = 0;
-    // الرسالة باللغة العربية (كما طلبت لسهولة التعامل مع العميل)
+    // الرسالة باللغة العربية للعميل
     let message = "مرحباً متجر La Luna! أرغب بتقديم الطلب التالي:\n\n";
 
     cart.forEach((item, index) => {
@@ -214,12 +235,12 @@ function generateWhatsAppOrderLink() {
 
 
 // --------------------------------------------------------
-// 5. ربط الأحداث الرئيسية (Initialization) - تم تحديث الربط لصفحة التفاصيل
+// 3. ربط الأحداث الرئيسية (Initialization)
 // --------------------------------------------------------
 
 document.addEventListener('DOMContentLoaded', () => {
     
-    // 1. تشغيل عرض العربة إذا كنا في صفحة cart.html
+    // تشغيل عرض العربة إذا كنا في صفحة cart.html
     if (document.getElementById('cart-table-body')) {
         displayCart();
         
@@ -229,43 +250,14 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // 💥 ربط سلس لجميع أزرار "Add to Cart" في كل صفحات المنتجات + صفحة التفاصيل
+    // 💥 ربط سلس لجميع أزرار "Add to Cart" في كل الصفحات (المنتجات والتفاصيل)
     document.querySelectorAll('.product .cta-button, .add-to-cart-detail-btn').forEach(button => {
         button.removeEventListener('click', (e) => addToCart(e.currentTarget));
         button.addEventListener('click', (e) => {
             e.preventDefault(); 
-            addToCart(e.currentTarget); // الدالة الآن تتعامل مع الكمية من صفحة التفاصيل تلقائيًا
+            addToCart(e.currentTarget); 
         });
     });
 
-    // ... (بقية أكواد ربط الفلاتر والبحث كما هي) ...
-    // 2. تشغيل فلاتر المنتجات إذا كنا في صفحات المنتجات
-    setupFilterTabs();
-    
-    // 3. ربط وظيفة البحث
-    const searchButton = document.querySelector('.search-btn');
-    if (searchButton) {
-        searchButton.addEventListener('click', handleSearch);
-    }
-    const searchInput = document.getElementById('search-input');
-    if (searchInput) {
-        searchInput.addEventListener('keydown', (event) => {
-            if (event.key === 'Enter') {
-                event.preventDefault(); 
-                handleSearch();
-            }
-        });
-    }
-
-    // 4. معالجة البحث الأولي من رابط
-    const urlParams = new URLSearchParams(window.location.search);
-    const initialQuery = urlParams.get('search');
-    
-    if (initialQuery) {
-        applySearchFilter(initialQuery.toLowerCase());
-        const searchInput = document.getElementById('search-input');
-        if (searchInput) {
-            searchInput.value = initialQuery;
-        }
-    }
+    // (هنا كان يوجد أكواد البحث والفلاتر التي تم حذفها بناءً على طلب الرجوع للشكل القديم)
 });

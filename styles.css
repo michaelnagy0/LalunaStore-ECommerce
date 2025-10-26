@@ -1,12 +1,12 @@
 /*
 ==================================================
-* ملف styles.css - لمتجر La Luna للمجوهرات
-* هذا هو الكود النهائي والكامل
+* ملف styles.css - (النسخة الأولية المُسترجعة)
+* هذا الكود لا يتضمن حل مشكلة الصور الطويلة (object-fit: cover)
 ==================================================
 */
 
 /* ----------------------------------------------- */
-/* الألوان والمتغيرات الأساسية (Root Variables) */
+/* الألوان والمتغيرات الأساسية */
 /* ----------------------------------------------- */
 :root {
     --color-primary: #1c1c1c; 
@@ -32,7 +32,7 @@
 body {
     background-color: var(--color-light-gray);
     line-height: 1.6;
-    direction: rtl; 
+    direction: rtl; /* اتجاه الكتابة عربي */
 }
 
 a {
@@ -70,7 +70,7 @@ a:hover {
 }
 
 /* ----------------------------------------------- */
-/* الهيدر (Header) وشريط التنقل (Navigation) */
+/* الهيدر وشريط التنقل */
 /* ----------------------------------------------- */
 header {
     background-color: var(--color-secondary);
@@ -187,30 +187,6 @@ section {
 /* ----------------------------------------------- */
 /* شبكة المنتجات (Product Grid) */
 /* ----------------------------------------------- */
-.filter-tabs {
-    display: flex;
-    justify-content: center;
-    gap: 15px;
-    margin-bottom: 30px;
-    flex-wrap: wrap;
-}
-
-.filter-btn {
-    background-color: var(--color-light-gray);
-    color: var(--color-dark-gray);
-    border: 1px solid var(--color-dark-gray);
-    padding: 10px 20px;
-    cursor: pointer;
-    border-radius: 5px;
-    transition: all var(--transition-speed);
-}
-
-.filter-btn:hover,
-.filter-btn.active {
-    background-color: var(--color-gold);
-    color: var(--color-secondary);
-    border-color: var(--color-gold);
-}
 
 .products-grid {
     display: grid;
@@ -224,10 +200,7 @@ section {
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     padding-bottom: 15px;
-    
-    /* 💥 مهم جداً لقص زوائد الصور الطولية 💥 */
     overflow: hidden; 
-    
     text-align: right;
     transition: transform 0.2s;
 }
@@ -237,18 +210,18 @@ section {
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }
 
-/* ================================================= */
-/* 💥 الكود الخاص بحل مشكلة الصور الطويلة (النهائي) 💥 */
-/* ================================================= */
+/* ⚠️ هذا الجزء هو السبب في مشكلة الصور الطويلة (تم إرجاعه بناءً على طلبك) */
 .products-grid .product img {
     width: 100%;                  
-    height: 300px;                /* تثبيت الارتفاع لتوحيد شكل البطاقات */
-    object-fit: cover;            /* يجعل الصورة تغطي المساحة المحددة (300px) دون تشويه ويقص الزيادات */
-    object-position: center;      /* توسيط الصورة داخل الإطار */
+    height: auto;                /* تم إلغاء التحديد ليسمح بالتمدد */
+    max-height: 350px;           /* تحديد ارتفاع أقصى فقط */
+    object-fit: contain;         /* تم إرجاعها إلى contain بدلاً من cover */
+    object-position: top;
     max-width: 100%;
     display: block;
     margin-bottom: 10px;
 }
+/* -------------------------------------------------------------------- */
 
 .product-info {
     padding: 0 15px;
@@ -282,7 +255,7 @@ section {
 }
 
 /* ----------------------------------------------- */
-/* صفحة تفاصيل المنتج (product-details.html) */
+/* صفحة تفاصيل المنتج (product-details.html) و صفحة سلة التسوق (cart.html) */
 /* ----------------------------------------------- */
 .details-container {
     display: flex;
@@ -292,13 +265,6 @@ section {
     text-align: right;
     padding-top: 30px;
 }
-
-.details-image {
-    flex: 1;
-    min-width: 300px;
-    max-width: 500px;
-}
-
 .details-image img {
     width: 100%;
     height: auto;
@@ -310,49 +276,6 @@ section {
     flex: 2;
     min-width: 300px;
 }
-
-.details-info h1 {
-    font-size: 2.5em;
-    color: var(--color-primary);
-    margin-bottom: 10px;
-}
-
-.details-info .price {
-    font-size: 2em;
-    color: var(--color-gold);
-    font-weight: 700;
-    margin-bottom: 20px;
-    display: block;
-}
-
-.details-info p {
-    font-size: 1.1em;
-    color: var(--color-dark-gray);
-    margin-bottom: 25px;
-}
-
-.details-info .quantity-selector {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    margin-bottom: 25px;
-}
-
-.details-info .quantity-selector label {
-    font-weight: 600;
-}
-
-.details-info .quantity-selector input {
-    width: 60px;
-    padding: 8px;
-    text-align: center;
-    border: 1px solid var(--color-dark-gray);
-    border-radius: 5px;
-}
-
-/* ----------------------------------------------- */
-/* صفحة سلة التسوق (cart.html) */
-/* ----------------------------------------------- */
 
 .cart-table-container {
     overflow-x: auto; 
@@ -378,84 +301,6 @@ section {
     text-align: right;
 }
 
-.cart-item-row .product-info {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    text-align: right;
-}
-
-.cart-item-row .product-info img {
-    width: 60px;
-    height: 60px;
-    object-fit: cover;
-    border-radius: 5px;
-}
-
-.cart-item-row .quantity-controls input {
-    width: 50px;
-    padding: 5px;
-}
-
-.cart-item-row .remove-btn {
-    background: none;
-    border: none;
-    cursor: pointer;
-    font-size: 1.2em;
-    color: #e74c3c; 
-    transition: color var(--transition-speed);
-}
-
-.cart-item-row .remove-btn:hover {
-    color: #c0392b;
-}
-
-/* ملخص الطلب */
-.cart-summary {
-    max-width: 400px;
-    margin-left: auto; 
-    background-color: var(--color-secondary);
-    padding: 25px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
-    text-align: right;
-}
-
-.cart-summary h3 {
-    font-size: 1.8em;
-    margin-bottom: 20px;
-    color: var(--color-gold);
-}
-
-.summary-item {
-    display: flex;
-    justify-content: space-between;
-    padding: 8px 0;
-    border-bottom: 1px dashed var(--color-light-gray);
-}
-
-.summary-item strong {
-    color: var(--color-primary);
-}
-
-.summary-total {
-    padding-top: 15px;
-    font-size: 1.3em;
-    font-weight: 700;
-    color: var(--color-primary);
-}
-
-.checkout-button,
-#whatsapp-order-btn {
-    width: 100%;
-    margin-top: 20px;
-    font-size: 1.1em;
-    font-weight: 700;
-    display: inline-block;
-    padding: 15px 0;
-}
-
-/* زر الواتساب */
 #whatsapp-order-btn {
     background-color: #25D366; 
     color: white;
@@ -465,53 +310,6 @@ section {
     background-color: #128C7E;
 }
 
-/* ----------------------------------------------- */
-/* صفحة تواصل معنا (contact.html) */
-/* ----------------------------------------------- */
-.contact-form {
-    max-width: 600px;
-    margin: 0 auto;
-    background-color: var(--color-secondary);
-    padding: 30px;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    text-align: right;
-}
-
-.contact-form h2 {
-    color: var(--color-primary);
-    margin-bottom: 10px;
-    text-align: center;
-}
-
-.contact-form p {
-    text-align: center;
-    color: var(--color-dark-gray);
-    margin-bottom: 25px;
-}
-
-.contact-form label {
-    display: block;
-    margin-bottom: 5px;
-    font-weight: 600;
-    color: var(--color-primary);
-}
-
-.contact-form input[type="text"],
-.contact-form input[type="email"],
-.contact-form textarea {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 20px;
-    border: 1px solid var(--color-dark-gray);
-    border-radius: 5px;
-    box-sizing: border-box;
-    font-size: 1em;
-}
-
-.contact-form textarea {
-    resize: vertical;
-}
 
 /* ----------------------------------------------- */
 /* الفوتر (Footer) */
@@ -527,79 +325,4 @@ footer {
 footer a {
     color: var(--color-gold);
     margin: 0 5px;
-}
-
-/* ----------------------------------------------- */
-/* 📱 التصميم المتجاوب (Responsive Design) 📱 */
-/* ----------------------------------------------- */
-
-/* شاشات الأجهزة اللوحية والهواتف الكبيرة (Tablet & Large Phone) */
-@media (max-width: 992px) {
-    
-    /* الهيدر وشريط التنقل */
-    nav {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 15px;
-    }
-
-    nav ul {
-        flex-direction: column;
-        gap: 10px;
-        width: 100%;
-        margin-top: 15px;
-    }
-
-    nav ul li a {
-        display: block;
-        padding: 8px 0;
-        text-align: right;
-    }
-    
-    .search-cart {
-        width: 100%;
-        justify-content: space-between;
-    }
-
-    .search-bar {
-        flex-grow: 1; 
-    }
-
-    /* صفحة تفاصيل المنتج */
-    .details-container {
-        flex-direction: column;
-        gap: 25px;
-    }
-    
-    .details-image, .details-info {
-        max-width: 100%;
-        min-width: unset;
-        width: 100%;
-    }
-}
-
-/* شاشات الهواتف الصغيرة (Small Phone) */
-@media (max-width: 576px) {
-    
-    .hero h1 {
-        font-size: 2.5em;
-    }
-
-    .hero p {
-        font-size: 1em;
-    }
-    
-    .products-grid {
-        grid-template-columns: 1fr; 
-    }
-    
-    /* ملخص العربة (يملأ العرض) */
-    .cart-summary {
-        max-width: 100%;
-        margin-left: 0;
-    }
-
-    .cart-table {
-        min-width: 500px; 
-    }
 }
