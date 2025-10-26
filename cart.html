@@ -1,53 +1,23 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="en" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <meta name="description" content="مراجعة سلة التسوق وتأكيد الطلبات من متجر La Luna.">
-    <meta name="keywords" content="سلة التسوق, عربة المشتريات, تأكيد الطلب, دفع, شحن">
-    <meta name="author" content="La Luna Team">
-    
-    <title>سلة التسوق | La Luna Store</title> 
-    
+    <title>Shopping Cart | La Luna Store</title> 
     <link rel="stylesheet" href="styles.css"> 
 </head>
 <body>
-
-    <header>
-        <div class="container">
-            <nav>
-                <div class="logo">La Luna</div>
-                <ul>
-                    <li><a href="index.html">الرئيسية</a></li>
-                    <li><a href="women.html">مجوهرات نسائية</a></li>
-                    <li><a href="men.html">مجوهرات رجالية</a></li>
-                    <li><a href="contact.html">تواصل معنا</a></li>
-                </ul>
-                <div class="search-cart">
-                    <div class="search-bar">
-                        <input type="text" id="search-input" placeholder="ابحث عن منتج...">
-                        <button class="search-btn">🔍</button>
-                    </div>
-                    <a href="cart.html" class="cart-icon active">🛒</a>
-                </div>
-            </nav>
-        </div>
-    </header>
-
     <section class="cart-content">
         <div class="container">
-            <h1>سلة التسوق</h1>
+            <h1>Shopping Cart</h1>
             
             <div class="cart-table-container">
                 <table class="cart-table">
                     <thead>
                         <tr>
-                            <th>المنتج</th>
-                            <th>الكمية</th>
-                            <th>السعر للوحدة</th>
-                            <th>الإجمالي</th>
-                            <th>حذف</th>
+                            <th>Product</th>
+                            <th>Quantity</th>
+                            <th>Price per Unit</th>
+                            <th>Total</th>
+                            <th>Remove</th>
                         </tr>
                     </thead>
                     <tbody id="cart-table-body">
@@ -56,38 +26,27 @@
             </div>
 
             <div class="cart-summary">
-                <h3>ملخص الطلب</h3>
+                <h3>Order Summary</h3>
                 <div class="summary-item">
-                    <span>الإجمالي الفرعي:</span>
+                    <span>Subtotal:</span>
                     <strong id="cart-subtotal">0.00 EGP</strong>
                 </div>
                 <div class="summary-item">
-                    <span>رسوم الشحن:</span>
+                    <span>Shipping Fee:</span>
                     <strong id="shipping-fee">0.00 EGP</strong>
                 </div>
                 <div class="summary-item summary-total">
-                    <span>الإجمالي الكلي:</span>
+                    <span>Grand Total:</span>
                     <strong id="final-total">0.00 EGP</strong>
                 </div>
                 
-                <button id="whatsapp-order-btn" class="cta-button">طلب عبر واتساب 💬</button>
+                <button id="whatsapp-order-btn" class="cta-button">Order via WhatsApp 💬</button>
                 
-                <button class="cta-button checkout-button" style="background-color: var(--color-dark-gray); margin-top: 10px;">إتمام الطلب (قريباً)</button>
+                <button class="cta-button checkout-button" style="background-color: var(--color-dark-gray); margin-top: 10px;">Proceed to Checkout (Coming Soon)</button>
             </div>
             
         </div>
     </section>
-
-    <footer>
-        <div class="container">
-            <p>&copy; 2024 La Luna Store. جميع الحقوق محفوظة.</p>
-            <p>
-                <a href="index.html">الرئيسية</a> |
-                <a href="contact.html">تواصل معنا</a> |
-                <a href="cart.html">سلة التسوق</a>
-            </p>
-        </div>
-    </footer>
 
     <script src="app.js"></script>
 </body>

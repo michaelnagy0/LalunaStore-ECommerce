@@ -1,97 +1,37 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="en" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <meta name="description" content="تشكيلة La Luna من المجوهرات الرجالية الفاخرة: خواتم، سلاسل، وأساور بتصاميم كلاسيكية وعصرية.">
-    <meta name="keywords" content="مجوهرات رجالية, خواتم رجالي, سلاسل رجالي, هدايا رجالية, فضة رجالي, أساور جلد">
-    <meta name="author" content="La Luna Team">
-    
-    <title>مجوهرات رجالية | خواتم وسلاسل رجالي | La Luna Store</title> 
-    
+    <title>Men's Jewelry | Rings and Necklaces | La Luna Store</title> 
     <link rel="stylesheet" href="styles.css"> 
 </head>
 <body>
-
-    <header>
-        <div class="container">
-            <nav>
-                <div class="logo">La Luna</div>
-                <ul>
-                    <li><a href="index.html">الرئيسية</a></li>
-                    <li><a href="women.html">مجوهرات نسائية</a></li>
-                    <li><a href="men.html" class="active">مجوهرات رجالية</a></li>
-                    <li><a href="contact.html">تواصل معنا</a></li>
-                </ul>
-                <div class="search-cart">
-                    <div class="search-bar">
-                        <input type="text" id="search-input" placeholder="ابحث عن منتج...">
-                        <button class="search-btn">🔍</button>
-                    </div>
-                    <a href="cart.html" class="cart-icon">🛒</a>
-                </div>
-            </nav>
-        </div>
-    </header>
-
     <section class="products-list">
         <div class="container">
-            <h1>تشكيلة مجوهرات رجالية</h1>
+            <h1>Men's Jewelry Collection</h1>
              <p id="search-results-message" style="text-align: right; margin-bottom: 20px; font-weight: 600;"></p>
             
             <div class="filter-tabs">
-                <button class="filter-btn active" data-filter="all">الكل</button>
-                <button class="filter-btn" data-filter="rings">خواتم</button>
-                <button class="filter-btn" data-filter="necklaces">سلاسل</button>
-                <button class="filter-btn" data-filter="bracelets">أساور</button>
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="rings">Rings</button>
+                <button class="filter-btn" data-filter="necklaces">Necklaces</button>
+                <button class="filter-btn" data-filter="bracelets">Bracelets</button>
             </div>
 
             <div class="products-grid">
                 
-                <div class="product" data-name="خاتم العقيق الفضي" data-price="750.00" data-category="rings">
-                    <img src="images/men-1.jpg" alt="خاتم فضة رجالي" class="product-img">
+                <div class="product" data-name="Silver Agate Ring" data-price="750.00" data-category="rings">
+                    <img src="images/men-1.jpg" alt="Silver Ring" class="product-img">
                     <div class="product-info">
-                        <h3>خاتم العقيق الفضي</h3>
-                        <span class="description">خاتم رجالي من الفضة الإسترليني عيار 925 بحجر العقيق.</span>
+                        <h3>Silver Agate Ring</h3>
+                        <span class="description">Men's 925 sterling silver ring with an Agate stone.</span>
                         <span class="price">750.00 EGP</span>
-                        <button class="cta-button">أضف للسلة</button>
-                    </div>
-                </div>
-
-                <div class="product" data-name="سلسلة فضة كبح" data-price="550.00" data-category="necklaces">
-                    <img src="images/men-2.jpg" alt="سلسلة فضة رجالية" class="product-img">
-                    <div class="product-info">
-                        <h3>سلسلة فضة كبح</h3>
-                        <span class="description">سلسلة فضية بتصميم كبح كلاسيكي، مناسبة للاستخدام اليومي.</span>
-                        <span class="price">550.00 EGP</span>
-                        <button class="cta-button">أضف للسلة</button>
+                        <button class="cta-button">Add to Cart</button>
                     </div>
                 </div>
                 
-                <div class="product" data-name="سوار جلد أسود" data-price="350.00" data-category="bracelets">
-                    <img src="images/men-3.jpg" alt="سوار جلد رجالي" class="product-img">
-                    <div class="product-info">
-                        <h3>سوار جلد أسود</h3>
-                        <span class="description">سوار رجالي من الجلد الطبيعي مع قفل مغناطيسي من التيتانيوم.</span>
-                        <span class="price">350.00 EGP</span>
-                        <button class="cta-button">أضف للسلة</button>
-                    </div>
                 </div>
-            </div>
         </div>
     </section>
-
-    <footer>
-        <div class="container">
-            <p>&copy; 2024 La Luna Store. جميع الحقوق محفوظة.</p>
-            <p>
-                <a href="index.html">الرئيسية</a> |
-                <a href="contact.html">تواصل معنا</a> |
-                <a href="cart.html">سلة التسوق</a>
-            </p>
-        </div>
-    </footer>
 
     <script src="app.js"></script>
 </body>

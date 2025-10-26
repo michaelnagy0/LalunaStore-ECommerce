@@ -1,75 +1,34 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="en" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <meta name="description" content="تواصل مع فريق متجر La Luna لتقديم الاستفسارات وطلبات المجوهرات المخصصة.">
-    <meta name="keywords" content="اتصل بنا, نموذج اتصال, دعم العملاء, La Luna email, استفسارات">
-    <meta name="author" content="La Luna Team">
-    
-    <title>تواصل معنا | La Luna Store</title> 
-    
+    <title>Contact Us | La Luna Store</title> 
     <link rel="stylesheet" href="styles.css"> 
 </head>
 <body>
-
-    <header>
-        <div class="container">
-            <nav>
-                <div class="logo">La Luna</div>
-                <ul>
-                    <li><a href="index.html">الرئيسية</a></li>
-                    <li><a href="women.html">مجوهرات نسائية</a></li>
-                    <li><a href="men.html">مجوهرات رجالية</a></li>
-                    <li><a href="contact.html" class="active">تواصل معنا</a></li>
-                </ul>
-                <div class="search-cart">
-                    <div class="search-bar">
-                        <input type="text" id="search-input" placeholder="ابحث عن منتج...">
-                        <button class="search-btn">🔍</button>
-                    </div>
-                    <a href="cart.html" class="cart-icon">🛒</a>
-                </div>
-            </nav>
-        </div>
-    </header>
-
     <section class="contact-section">
         <div class="container">
             
             <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST" class="contact-form">
                 
-                <h2>تواصل معنا</h2>
-                <p>يسعدنا استقبال استفساراتكم أو طلباتكم الخاصة. (تصل الرسائل إلى: michaelnagyfouad@gmail.com)</p>
+                <h2>Contact Us</h2>
+                <p>We are happy to receive your inquiries. (Emails sent to: michaelnagyfouad@gmail.com)</p>
                 
-                <label for="name">الاسم بالكامل:</label>
-                <input type="text" id="name" name="الاسم" required placeholder="أدخل اسمك الكريم">
+                <label for="name">Full Name:</label>
+                <input type="text" id="name" name="الاسم" required placeholder="Enter your full name">
 
-                <label for="email">البريد الإلكتروني:</label>
-                <input type="email" id="email" name="_replyto" required placeholder="البريد الإلكتروني الخاص بك"> 
+                <label for="email">Email Address:</label>
+                <input type="email" id="email" name="_replyto" required placeholder="Your email address"> 
 
-                <label for="message">الرسالة أو الاستفسار:</label>
-                <textarea id="message" name="الرسالة" rows="6" required placeholder="اكتب رسالتك هنا..."></textarea>
+                <label for="message">Message or Inquiry:</label>
+                <textarea id="message" name="الرسالة" rows="6" required placeholder="Write your message here..."></textarea>
 
                 <input type="text" name="_gotcha" style="display:none">
                 
-                <button type="submit" class="cta-button">إرسال الرسالة</button>
+                <button type="submit" class="cta-button">Send Message</button>
             </form>
             
         </div>
     </section>
-
-    <footer>
-        <div class="container">
-            <p>&copy; 2024 La Luna Store. جميع الحقوق محفوظة.</p>
-            <p>
-                <a href="index.html">الرئيسية</a> |
-                <a href="contact.html">تواصل معنا</a> |
-                <a href="cart.html">سلة التسوق</a>
-            </p>
-        </div>
-    </footer>
 
     <script src="app.js"></script>
 </body>

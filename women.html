@@ -1,97 +1,37 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="en" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <meta name="description" content="تشكيلة La Luna من المجوهرات النسائية الفاخرة: خواتم، قلائد، وأساور بتصاميم عصرية.">
-    <meta name="keywords" content="مجوهرات نسائية, خواتم نسائية, أساور حريمي, هدايا نسائية, قلائد ذهب نسائي">
-    <meta name="author" content="La Luna Team">
-    
-    <title>مجوهرات نسائية | خواتم وقلائد وأساور | La Luna Store</title> 
-    
+    <title>Women's Jewelry | Rings, Necklaces, Bracelets | La Luna Store</title> 
     <link rel="stylesheet" href="styles.css"> 
 </head>
 <body>
-
-    <header>
-        <div class="container">
-            <nav>
-                <div class="logo">La Luna</div>
-                <ul>
-                    <li><a href="index.html">الرئيسية</a></li>
-                    <li><a href="women.html" class="active">مجوهرات نسائية</a></li>
-                    <li><a href="men.html">مجوهرات رجالية</a></li>
-                    <li><a href="contact.html">تواصل معنا</a></li>
-                </ul>
-                <div class="search-cart">
-                    <div class="search-bar">
-                        <input type="text" id="search-input" placeholder="ابحث عن منتج...">
-                        <button class="search-btn">🔍</button>
-                    </div>
-                    <a href="cart.html" class="cart-icon">🛒</a>
-                </div>
-            </nav>
-        </div>
-    </header>
-
     <section class="products-list">
         <div class="container">
-            <h1>تشكيلة مجوهرات نسائية</h1>
+            <h1>Women's Jewelry Collection</h1>
             <p id="search-results-message" style="text-align: right; margin-bottom: 20px; font-weight: 600;"></p>
             
             <div class="filter-tabs">
-                <button class="filter-btn active" data-filter="all">الكل</button>
-                <button class="filter-btn" data-filter="rings">خواتم</button>
-                <button class="filter-btn" data-filter="necklaces">قلائد</button>
-                <button class="filter-btn" data-filter="bracelets">أساور</button>
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="rings">Rings</button>
+                <button class="filter-btn" data-filter="necklaces">Necklaces</button>
+                <button class="filter-btn" data-filter="bracelets">Bracelets</button>
             </div>
 
             <div class="products-grid">
                 
-                <div class="product" data-name="خاتم ألماس سوليتير" data-price="15000.00" data-category="rings">
-                    <img src="images/women-1.jpg" alt="خاتم ألماس" class="product-img">
+                <div class="product" data-name="Diamond Solitaire Ring" data-price="15000.00" data-category="rings">
+                    <img src="images/women-1.jpg" alt="Diamond Ring" class="product-img">
                     <div class="product-info">
-                        <h3>خاتم ألماس سوليتير</h3>
-                        <span class="description">خاتم خطوبة من الذهب الأبيض مرصع بحجر ألماس نقي.</span>
+                        <h3>Diamond Solitaire Ring</h3>
+                        <span class="description">White gold engagement ring with a pure diamond stone.</span>
                         <span class="price">15,000.00 EGP</span>
-                        <button class="cta-button">أضف للسلة</button>
-                    </div>
-                </div>
-
-                <div class="product" data-name="قلادة القمر والنجوم" data-price="950.00" data-category="necklaces">
-                    <img src="images/women-2.jpg" alt="قلادة نسائية" class="product-img">
-                    <div class="product-info">
-                        <h3>قلادة القمر والنجوم</h3>
-                        <span class="description">قلادة بسيطة وأنيقة من الفضة الإسترليني.</span>
-                        <span class="price">950.00 EGP</span>
-                        <button class="cta-button">أضف للسلة</button>
+                        <button class="cta-button">Add to Cart</button>
                     </div>
                 </div>
                 
-                <div class="product" data-name="سوار ذهبي مفتوح" data-price="4200.00" data-category="bracelets">
-                    <img src="images/women-3.jpg" alt="سوار ذهبي" class="product-img">
-                    <div class="product-info">
-                        <h3>سوار ذهبي مفتوح</h3>
-                        <span class="description">سوار عريض من الذهب عيار 18، تصميم عصري.</span>
-                        <span class="price">4,200.00 EGP</span>
-                        <button class="cta-button">أضف للسلة</button>
-                    </div>
                 </div>
-            </div>
         </div>
     </section>
-
-    <footer>
-        <div class="container">
-            <p>&copy; 2024 La Luna Store. جميع الحقوق محفوظة.</p>
-            <p>
-                <a href="index.html">الرئيسية</a> |
-                <a href="contact.html">تواصل معنا</a> |
-                <a href="cart.html">سلة التسوق</a>
-            </p>
-        </div>
-    </footer>
 
     <script src="app.js"></script>
 </body>
